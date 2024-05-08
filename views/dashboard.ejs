@@ -1,0 +1,42 @@
+<%- include('partials/head',{title:'BCU DashBoard'})%>
+<%- include('partials/dashboardHeader')%>
+<section class="dashboardContainer">
+    <div class="mainAreaDashboard">
+            <div class="dashboardContainerItems">
+                <div class="saldoContainer">
+                    <canvas id="myChartPolar"></canvas>
+                </div>               
+                <div class="saldoContainer">
+                    <canvas id="myChart"></canvas>
+                    <a href="/dashboard/cartoes">Ver Saldo</a>
+                </div>               
+                <div class="saldoContainer transferenciaRapida">
+                    <h4>Transferência Rápida</h4>
+                    <form class="transferenciaRapidaForm borderCurveElements" id="transferenciaRapidaForm">
+                        <label for="contaNumeroDestinario">Número da Conta</label>
+                        <input type="number" name="contaNumeroDestinatio" id="contaNumeroDestinatario" max="99999999" required>
+                        <label for="valorDestinatario">Valor</label>
+                        <input type="number" name="contaNumeroDestinatio" id="valorDestinatario" min="1" required>
+                        <button class="btnSalvarDados">Transferir</button>
+                        <p class="info"></p>
+                    </form>
+                </div>               
+            </div>
+        </div>
+        <h3 id="timeObject" class="dashboardTimer"></h3>
+            <%- include('partials/sideBar')%>
+    </section>
+    <script>
+        const timeObject= document.querySelector('#timeObject');
+        const timer=()=>{
+                const hora=(new Date()).getHours()<10?`0${(new Date()).getHours()}`:`${(new Date()).getHours()}`;
+                const min=(new Date()).getMinutes()<10?`0${(new Date()).getMinutes()}`:`${(new Date()).getMinutes()}`;
+                const sec=(new Date()).getSeconds()<10?`0${(new Date()).getSeconds()}`:`${(new Date()).getSeconds()}`;
+                return `${hora}:${min}:${sec}`;
+            }
+            setInterval(()=>{
+                timeObject.textContent=timer();
+            },1000)
+    </script>
+       <%- include('partials/footer')%>
+    <%- include('partials/pageEnd')%>

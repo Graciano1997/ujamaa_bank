@@ -1,0 +1,104 @@
+<%- include('../partials/head',{title:'BCU Créditos'})%>
+  <%- include('../partials/header')%>
+    <%- include('../partials/carrocel')%>
+      <section class="creditoContainer">
+        <h1>Nossos Créditos</h1>
+        <p>
+          O Banco BCU está comprometido em fornecer soluções
+          financeiras flexíveis e acessíveis para atender às diversas necessidades de nossos clientes.
+        </p>
+        <p>
+          Oferecemos uma variedade de opções de crédito projetadas para atender desde necessidades
+          pessoais até investimentos corporativos. Conheça nossos principais tipos de crédito:
+        </p>
+        <div class="creditoItemContainerHome">
+          <%creditoTipos.forEach((creditotipo)=>{%>
+            <div class="creditoItemHome" data-creditoId=<%=creditotipo.id%>>
+              <h3>
+                <%=`${creditotipo.nome}`%>
+              </h3>
+              <p>Taxa(%): <%=creditotipo.juro%>
+              </p>
+              <p>Comições: <%=creditotipo.comicao%>
+              </p>
+              <p>Duração (meses): <%=creditotipo.duracao%>
+              </p>
+              <p>Valor (KZ): <%=creditotipo.valor%>
+              </p>
+            </div>
+            <%})%>
+        </div>
+        <div class="creditoSimulador">
+          <h2>Simulador de Crédito</h2>
+          <form id="formSimulador">
+            <label for="creditoTipo">Tipo de Crédito</label>
+            <select name="credito" id="creditoTipo">
+              <%creditoTipos.forEach((creditotipo,index)=>{%>
+                <%if(index===0){%>
+                  <option value=<%=JSON.stringify(creditotipo)%> selected><%=creditotipo.nome%>
+                  </option>
+                  <%}else{%>
+                    <option value=<%=JSON.stringify(creditotipo)%>><%=creditotipo.nome%>
+                    </option>
+                    <%}})%>
+            </select>
+            <label for="clientevalorDesejados">Valor Desejado</label>
+            <input type="number" id="clientevalorDesejados" min="0" placeholder="valor desejado" value=<%=creditoTipos[0].valor%> max=
+            <%=creditoTipos[0].valor%>>
+            <label for="clientemesesDesejados">Quantidade de meses a pagar</label>
+            <input type="number" id="clientemesesDesejados" min="1" placeholder="Quantidade de meses a pagar" value=<%=creditoTipos[0].duracao%> max=<%=creditoTipos[0].duracao%> required>
+              <button class="simularBtn" type="submit">Simular</button>
+          </form>
+          <div class="resultadoCreditoSimuladoContainer hide">
+            <h2>Resultado da simulação de Crédito</h2>
+            <div class="resultadoCreditoSimulado">
+              <div class="creditoSelecionado">
+                <p>A designação Comercial do Produto que você selecionou é o Crédito <b id="creditoNomeSimula"></b>.</p>
+                <p>Este Crédito te habilitará a receber o valor total de <b id="solicitadoValor"></b> na moeda Kwanza
+                </p>
+                <p>O valor total de reembolso é <b id="creditoValor"></b>, isto é pagando <b id="pagamentoMensal"></b> em <b id="prestacoes"></b> prestação</p>
+                <p>Possuiras <span id="mesesCredito"></span> meses uteis para poder fazer o pagamento das comições
+                  acrescentada a taxa mensal de <b id="taxaCredito"></b>%</p>
+              </div>
+            </div>
+            <button id="ocultarCreditoResultBtn" type="button">Ocultar</button>
+          </div>
+        </div>
+
+      </section>
+      <script>
+        document.querySelector('#creditoTipo').addEventListener('change', (el) => {
+          const value = el.target.value;
+          document.querySelector("#clientevalorDesejados").max = JSON.parse(value).valor;
+          document.querySelector('#clientevalorDesejados').value = JSON.parse(value).valor;
+          document.querySelector('#clientemesesDesejados').value = JSON.parse(value).duracao;
+          document.querySelector('#clientemesesDesejados').max = JSON.parse(value).duracao;
+        });
+
+        document.querySelector('#clientevalorDesejados').addEventListener('input', (el) => {
+          const value = el.target.value;
+          document.querySelector("#clientevalorDesejadosShow").textContent = 'KZ ' + value;
+        })
+        document.querySelector('#formSimulador').addEventListener('submit', (el) => {
+          el.preventDefault();
+          const creditoTipo = JSON.parse(document.querySelector('#creditoTipo').value);
+          const valorSolicitado = document.querySelector('#clientevalorDesejados').value;
+          const mesesNumero = document.querySelector('#clientemesesDesejados').value;
+          const valorTotalApagar = (valorSolicitado * 1 + ((creditoTipo.juro * valorSolicitado) / 100));
+          const pagamentoMensal = (valorTotalApagar / mesesNumero).toFixed(2);
+          document.querySelector("#creditoNomeSimula").textContent = creditoTipo.nome;
+          document.querySelector("#creditoValor").textContent = 'KZ ' + valorTotalApagar;
+          document.querySelector("#mesesCredito").textContent = mesesNumero;
+          document.querySelector("#taxaCredito").textContent = creditoTipo.juro;
+          document.querySelector("#pagamentoMensal").textContent = 'KZ ' + pagamentoMensal;
+          document.querySelector("#taxaCredito").textContent = creditoTipo.juro;
+          document.querySelector("#solicitadoValor").textContent = 'KZ ' + valorSolicitado;
+          document.querySelector("#prestacoes").textContent = mesesNumero;
+          document.querySelector(".resultadoCreditoSimuladoContainer").classList.remove('hide');
+        })
+        document.querySelector("#ocultarCreditoResultBtn").addEventListener("click", () => {
+          document.querySelector(".resultadoCreditoSimuladoContainer").classList.add('hide');
+        });
+      </script>
+      <%- include('../partials/footerlandpage')%>
+      <%- include('../partials/pageEnd')%>

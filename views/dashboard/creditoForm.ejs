@@ -1,0 +1,42 @@
+<%- include('../partials/head',{title:'BCU Tipos de Conta'})%>
+  <%- include('../partials/dashboardHeader')%>
+    <section class="dashboardDadosFormContainer">
+      <form class="contaFormContainer borderCurveElements" id="creditoFormDados">
+          <label for="creditoTipo">Tipo de Crédito</label>
+          <input type="text"  id="creditoTipo" placeholder="novo" required>
+          <label for="creditoPrazo">Prazo do Crédito</label>
+          <input type="number"  id="creditoMes" placeholder="meses" min="1" step="1" required>
+          <label for="creditoValor">Valor</label>
+          <input type="number"  id="creditoValor" placeholder="novo" min="0" required>
+          <label for="creditoComicao">Comições</label>
+          <input type="number"  id="creditoComicao" placeholder="numero máximo das Comições pagas" min="0" required>
+          <label for="creditoTaxaJuro">Taxa de Juros %</label>
+          <input type="number"  id="creditoTaxaJuro" min="0" step="0.1" required>
+      <button class="btnSalvarDados" type="submit">Salvar</button>  
+    </form>
+    <%if(creditos.data.length!==0){%>
+      <h1>Tipos de Créditos</h1>
+        <section class="contasItemContainer">
+          <div class="contaItem">
+           <h1>Nome</h1>
+           <h1>Montante (KZ)</h1>
+           <h1>Tempo(Meses)</h1>
+           <h1>_</h1>
+          </div>
+          <%creditos.data.forEach((credito)=>{%>
+        <%- include('partials/creditoItem',{credito:{nome:credito.nome,id:credito.id,prazo:credito.duracao,valor:credito.valor}})%>
+        <% })%>
+      </section>
+        <%} else{%>
+          <div class="contaInfo">
+            <h1>Sem nenhum tipo de Crédito</h1>
+          </div>
+        <%}%>
+      <div class="infoContainer">
+        <p class="info"></p>
+    </div>
+      <%- include('../partials/sideBar')%>
+    </section>
+    <script src="/assets/js/creditoForm.js"></script>
+    <%- include('../partials/footer')%>
+      <%- include('../partials/pageEnd')%>

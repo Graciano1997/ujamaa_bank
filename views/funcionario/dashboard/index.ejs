@@ -1,0 +1,36 @@
+<%- include('../../partials/head',{title:'BCU Funcionario DashBoard'})%>
+  <%- include('../../partials/funcionariodashboardHeader')%>
+    <section class="dashboardContainer">
+      <div class="mainAreaDashboard">
+        <div class="dashboardContainerItems">
+          <div class="saldoContainer">
+            <canvas id="myChartPolar"></canvas>
+            <a href="/dashboard/cartoes">Saldo</a>
+          </div>
+          <div class="saldoContainer">
+            <canvas id="myChart"></canvas>
+            <a href="/dashboard/cartoes">Saldo</a>
+          </div>
+        </div>
+        <nav class="mobileDashMenu">
+          <ul>
+            <li><button id="saldoDashBtn">Saldo</button></li>
+            <li><button id="transferDashBtn">Transferências</button></li>
+            <li><button id="levantaDashBtn">Levantamentos</button></li>
+          </ul>
+        </nav>
+        <div class="mobileDashBoard">
+          <div class="saldoContainer">
+            <canvas id="saldo"></canvas>
+            <a href="/dashboard/cartoes">Saldo</a>
+          </div>
+        </div>
+      </div>
+      <%- include('../../partials/sideBarFuncionario')%>
+    </section>
+    <script src="/assets/js/Chart.js"></script>
+    <script src="/assets/js/graph.js"></script>
+    <script src="/assets/js/levantamentoChart.js"></script>
+    <script src="/assets/js/dashboard.js"></script>
+    <%- include('../../partials/footer')%>
+      <%- include('../../partials/pageEnd')%>

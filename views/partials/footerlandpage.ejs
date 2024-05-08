@@ -1,0 +1,57 @@
+<%- include('menu')%>
+<footer class="footerLandPage">
+    <div class="footerLandItems">
+        <div class="footerLogoContainer">
+            <img src="/assets/img/logo.jpg" class="logoImage" id="logoImage">
+            <h4>Banco Comercial Ujamaa</h4>
+          </div>
+        <div class="mapaSite">
+            <h3>Mapa do Site</h3>
+            <ul class="mapaSiteLista">
+                <li><a href="/login">BCU Online</a></li>
+                <li> <a href="/contas">Contas</a></li>
+                <li><a href="/cartoes">Cartões</a></li>
+                <li><a href="/creditos">Créditos</a></li>
+                <li><a href="/">Inicial</a></li>
+                <li><a href="/instituicional">Instituicional</a></li>
+                <li><a href="/apoio_ao_cliente">Linha 24H</a></li>
+                <li><a href="/perguntas_frequentes">Perguntas Frequentes</a></li>
+                <li><a href="/seguros">Seguros</a></li>
+            </ul>
+        </div>
+        <div class="mapaSite">
+            <h3>Redes</h3>
+            <ul class="mapaSiteLista">
+                <li><a href="https://www.linkedin.com/">Linkedin</a></li>
+                <li><a href="https://www.facebook.com">FaceBook</a></li>
+                <li><a href="https://www.youtube.com">Youtube</a></li>
+                <li><a href="https://twitter.com">Twitter</a></li>
+            </ul>
+        </div>
+        <div class="mapaSite">
+            <h3>Hora</h3>
+            <ul class="">      
+                <li><h3 id="timeObject"></h3></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="rights">
+        <p>© 2024 Banco Comercial Ujamaa. Todos os Direitos Reservados</p>
+    </div>
+</footer>
+<script>
+    document.querySelector('#logoImage').addEventListener('click',()=>{
+        window.location.href="/";
+    })
+    const timeObject= document.querySelector('#timeObject');
+        const timer=()=>{
+                const hora=(new Date()).getHours()<10?`0${(new Date()).getHours()}`:`${(new Date()).getHours()}`;
+                const min=(new Date()).getMinutes()<10?`0${(new Date()).getMinutes()}`:`${(new Date()).getMinutes()}`;
+                const sec=(new Date()).getSeconds()<10?`0${(new Date()).getSeconds()}`:`${(new Date()).getSeconds()}`;
+                return `${hora}:${min}:${sec}`;
+            }
+            setInterval(()=>{
+                timeObject.textContent=timer();
+            },1000)
+</script>

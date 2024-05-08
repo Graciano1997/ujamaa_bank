@@ -1,0 +1,56 @@
+<%- include('../partials/head',{title:'BCU Dados Pessoais'})%>
+  <%- include('../partials/dashboardHeader')%>
+    <section class="dashboardUserDadosFormContainer">
+      <form class="dashboardUserDadosForm borderCurveElements" id="clienteFormDados">
+        <div class="informacoesPessoais">
+          <label for="clienteNomeCompleto">Nome Completo</label>
+          <input type="text"  id="clienteNomeCompleto" readonly>
+          <label for="clienteEmail">Email</label>
+          <input type="email"  id="clienteEmail" readonly>
+          <label for="clienteBilhete"><span class="camposObrigatorio">*</span>Bilhete</label>
+          <input type="text" id="clienteBilhete" required>
+          <div class="contactosContainer">
+            <div>
+              <label for="clienteEstadoCivil"><span class="camposObrigatorio">*</span>Estado Civil</label>
+              <select name="estado" id="clienteEstadoCivil" required>
+                <option value="solteiro">Solteiro(a)</option>
+                <option value="casado">Casado(a)</option>
+                <option value="viúvo">Viúvo(a)</option>
+              </select>
+            </div>
+        <div>
+          <label for="clienteSexo"><span class="camposObrigatorio">*</span>Sexo</label>
+          <select name="sexo" id="clienteSexo">
+            <option value="Masculino" selected>Masculino</option>
+            <option value="Femenino">Femenino</option>
+          </select>
+        </div>
+        </div>
+        <label for="clienteNascimento"><span class="camposObrigatorio">*</span>Data de Nascimento</label>
+        <input type="date" id="clienteNascimento" required>
+      </div>
+        <div class="informacoesAcademicas">
+          <label for="clienteNivelAcademico"><span class="camposObrigatorio">*</span>Nível Academico</label>
+          <select name="nivelAcademico" id="clienteNivelAcademico" required>
+            <option value="base">Base</option>
+            <option value="médio">Médio</option>
+            <option value="licenciado">Ensino Superior</option>
+            <option value="mestre">Mestre</option>
+            <option value="doctor">Doctor</option>
+          </select>
+          <label for="clienteMorada"><span class="camposObrigatorio">*</span>Morada</label>
+          <input type="text" id="clienteMorada" required>
+          <div class="contactosContainer">
+           <div>
+             <label for="clienteTel1"><span class="camposObrigatorio">*</span>Telefone Principal</label>
+             <input type="tel" name="contactos" id="clienteTel1">
+           </div>
+          </div>
+      </div>
+      <button class="btnSalvarDados" type="submit">Salvar</button>
+      </form>
+      <%- include('../partials/sideBar')%>
+    </section>
+    <script src="/assets/js/clienteForm.js"></script>
+    <%- include('../partials/footer')%>
+      <%- include('../partials/pageEnd')%>

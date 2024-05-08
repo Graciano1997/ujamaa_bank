@@ -1,0 +1,90 @@
+<%- include('../partials/head',{title:'BCU Dados Pessoais'})%>
+  <%- include('../partials/dashboardHeader')%>
+  <%
+  const userInformation={
+    nome: user.nome,
+    sobrenome:user.sobrenome,
+    email: user.email,
+    iban: user.iban,
+    numero: user.numero,
+    tlf: user.tlf,
+    morada: user.morada,
+  }
+  %>
+    <section class="dashboardContainer">
+    <div class="utilizadorContainer" data-user=<%=JSON.stringify(userInformation)%>>
+      <div class="userAvatar">
+        <img src="/assets/img/user.jpg" alt="">
+      </div>
+      <div class="utilizadorDados" id="userDATA">
+        <h3><%=`${user.nome} ${user.sobrenome}`%></h3>
+        <p class="adress"><%=(user.morada).replaceAll('_',' ')%></p>
+        <p class="roleUser">"<%=(user.estatuto).replaceAll('_',' ')%>"</p>
+        <ul>
+          <li>
+            <p><b>Email:</b><%=user.email%></p>
+          </li>
+
+          <li>
+            <p><b>Iban:</b><%=user.iban%></p>
+          </li>
+          <li>
+            <p><b>Conta:</b><%=user.numero%></p>
+          </li>
+          <li>
+            <p><b>Tlf:</b><%=user.tlf%></p>
+          </li>
+        </ul>
+      </div>
+      <button id="btnExportar">Exportar</button>
+    </div>
+      <%- include('../partials/sideBar')%>
+    </section>
+    <script src="/assets/js/pdf.js"></script>
+    <script>
+                const templateUserDetails=(object)=>{
+        
+            return `<div class="pdfContainer">
+                <header>
+                  <div class="logoContainerPdf">
+                  <img src="/assets/img/logo.jpg" class="logoImage">
+                  </div>
+                <h3>* Dados do Cliente *</h3>
+                </header>
+
+              <div class="pdfContainerBody">
+              <p>Nome: ${(object.nome).charAt(0).toUpperCase()+(object.nome).slice(1)} ${(object.sobrenome).charAt(0).toUpperCase()+(object.sobrenome).slice(1)}</p>
+              <p>Email: ${object.email}</p>
+              <p>Iban: ${object.iban}</p>
+              <p>Conta Nª: ${object.numero}</p>
+              <p>Morada: ${(object.morada).replaceAll('_',' ')}</p>
+              <p>Telefone: ${object.tlf}</p>
+              <hr style="color:purple">
+              <p style="text-align:center; margin-top:0.5rem">Data: ${(new Date()).getDate()}-${(new Date()).getMonth()}-${(new Date()).getFullYear()}   ${(new Date()).getHours()}:${(new Date()).getMinutes()} ${(new Date()).getHours()>12?'PM':'AM'}</p>
+              </div>
+              </div>
+            `
+          }
+const userInfoBtnExport=document.getElementById('btnExportar');
+if(userInfoBtnExport){
+  userInfoBtnExport.addEventListener('click', function() {
+        const parentNode=userInfoBtnExport.parentElement;
+        const userDetails=JSON.parse(parentNode.getAttribute('data-user'));
+
+      html2pdf().from(templateUserDetails(userDetails)).set({
+    filename: userDetails.nome+'_Dados.pdf',
+    margin: [20, 5, 20, 5], // Specify margins: top, right, bottom, left
+    pagebreak: { mode: 'avoid-all' }, // Avoid page breaks inside content,
+    page: {
+            size: 'A4', // A4 size
+            orientation: 'portrait', // portrait ,'landscape' for landscape orientation
+            // margin: [10, 20, 30, 40] // top, right, bottom, left
+        }
+}).save();
+      });
+}
+  
+      </script>
+    <script src="/assets/js/clienteForm.js"></script>
+    <%- include('../partials/footer')%>
+      <%- include('../partials/pageEnd')%>

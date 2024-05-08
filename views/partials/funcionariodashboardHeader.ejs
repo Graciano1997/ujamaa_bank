@@ -1,0 +1,30 @@
+<div class="dashboardContainerHeader">
+  <div class="logoContainer">
+    <img src="/assets/img/logo.jpg" class="logo">
+  </div>
+  <div class="avatarDetails">
+    <img src="/assets/img/user.jpg" alt="avatar" id="avatarImg">
+  <div class="avatarItems hideAvatar">
+    <ul>
+      <li><a href="/funcionario/dashboard/utilizador" id="userName"></a></li>
+      <li><a href="/funcionario/dashboard/definicoes">Definições</a></li>
+      <li><a id="btnSair">Sair<img src="/assets/img/logout.svg" alt="logout"></a></li>
+    </ul>
+  </div>
+  </div>
+  <div class="chocolateContainer">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+<script>
+const currentSession=JSON.parse(localStorage.getItem('currentSession'));
+  document.querySelector("#userName").textContent=(currentSession.nome).charAt(0).toUpperCase()+(currentSession.nome).slice(1);
+</script>

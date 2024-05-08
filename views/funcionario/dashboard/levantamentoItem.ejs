@@ -1,0 +1,19 @@
+<div class="levantamentoItem">
+    <p class="cabecalhoItem"><span><%=valor%></span> <span>KZ</span></p>
+        <p class="cabecalhoItem">
+            <span>Data:</span> <span><%=`${new Date(data).getDate()} - ${new Date(data).getMonth() + 1} - ${new Date(data).getFullYear()}  ${new Date(data).getHours()}:${new Date(data).getMinutes()}`%></span>   
+        </p>
+
+        <%if(feito){%>
+            <p class="cabecalhoItem"><span>Estado:</span><span>Feito </span></p>
+        <%}else{%>
+            <p class="cabecalhoItem"><span>Estado:</span><span>Pendente </span></p>
+        <%}%>
+
+    <div class="levantamentoAction">
+        <%if(!feito){%>
+            <button id="levantamentoCancelar">Cancelar</button>
+        <%}%>
+        <button>Exportar</button>
+    </div>
+</div>

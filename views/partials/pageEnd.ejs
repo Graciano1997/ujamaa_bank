@@ -1,0 +1,20 @@
+<script src="/assets/js/ips.js"></script>
+<script src="/assets/js/utilizadorHandler.js"></script>
+<script src="/assets/js/index.js"></script>
+<script src="/assets/js/Chart.js"></script>
+<script src="/assets/js/graph.js"></script>
+<script src="/assets/js/levantamentoChart.js"></script>
+<script src="/assets/js/graphOperation.js"></script>
+<script src="/assets/js/dashboard.js"></script>
+<script src="/assets/js/transferenciaForm.js"></script>
+<script>
+    if (document.querySelector("#btnHideMovimentos") !== null) {
+        document.querySelector("#btnHideMovimentos").addEventListener("click", (el) => {
+            document.querySelector(".movimentoCntainer").classList.toggle('hideMovimentsGraph');
+            document.querySelector(".rotateItem").classList.toggle('rotate');
+        });
+    }
+</script>
+</body>
+
+</html>

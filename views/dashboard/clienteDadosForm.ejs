@@ -1,0 +1,128 @@
+<%- include('../partials/head',{title:'BCU Dados Pessoais'})%>
+  <%- include('../partials/dashboardHeader')%>
+    <!-- <section class="dashboardContainer"> -->
+    <section class="dashboardClienteDadosFormContainer">
+      <form class="dashboardUserDadosForm borderCurveElements" id="clienteFormDados">
+        <div class="informacoesPessoais form1">
+          <div class="contactosContainer">
+            <div>
+              <label for="clienteNomeCompleto">Nome</label>
+              <input type="text" id="clienteNomeCompleto" readonly>
+            </div>
+            <div>
+              <label for="clienteSobreNome">Sobrenome</label>
+              <input type="text" id="clienteSobreNome">
+            </div>
+          </div>
+
+          <label for="clienteEmail">Email</label>
+          <input type="email" id="clienteEmail" readonly>
+
+          <label for="clientePassaporte"><span class="camposObrigatorio">*</span>Passaporte</label>
+          <input type="text" id="clientePassaporte" maxlength="14" minlength="14" required>
+          <div class="contactosContainer">
+
+            <div>
+              <label for="clienteBilhete"><span class="camposObrigatorio">*</span>Bilhete</label>
+              <input type="text" id="clienteBilhete" maxlength="14" minlength="14" required>
+            </div>
+            <div>
+              <label for="clienteNascimento"><span class="camposObrigatorio">*</span>Nascimento</label>
+              <input type="date" id="clienteNascimento" required>
+            </div>
+          </div>
+          <div class="contactosContainer">
+            <div>
+              <label for="clienteEstadoCivil"><span class="camposObrigatorio">*</span>Estado Civil</label>
+              <select name="estado" id="clienteEstadoCivil" required>
+                <option value="solteiro">Solteiro(a)</option>
+                <option value="casado">Casado(a)</option>
+                <option value="viúvo">Viúvo(a)</option>
+              </select>
+            </div>
+            <div>
+              <label for="clienteSexo"><span class="camposObrigatorio">*</span>Sexo</label>
+              <select name="sexo" id="clienteSexo">
+                <option value="Masculino" selected>Masculino</option>
+                <option value="Femenino">Femenino</option>
+              </select>
+            </div>
+          </div>
+
+          <label for="clienteNivelAcademico"><span class="camposObrigatorio">*</span>Nível Academico</label>
+          <select name="nivelAcademico" id="clienteNivelAcademico" required>
+            <option value="base">Base</option>
+            <option value="médio">Médio</option>
+            <option value="licenciado">Ensino Superior</option>
+            <option value="mestre">Mestre</option>
+            <option value="doctor">Doctor</option>
+          </select>
+          <label for="clienteCasaPropria">Possuis Casa Própria ?</label>
+          <select name="casa_propria" id="clienteCasaPropria">
+            <option value=<%=true%>>Sim</option>
+            <option value=<%=false%>>Não</option>
+          </select>
+        </div>
+
+        <div class="informacoesPessoais form2 hide">
+          <label for="estatuto">Estatuto Profissional</label>
+          <input type="text" id="clienteEstatuto">
+          <label for="numeroFilhos">Número de Filhos</label>
+          <input type="number" id="clienteNumeroFilho" min="0">
+          <!-- <div class="contactosContainer">
+            <div> -->
+          <label for="clienteTel1"><span class="camposObrigatorio">*</span>Telefone 1</label>
+          <input type="tel" name="contactos" id="clienteTel1">
+          <!-- </div> -->
+          <!-- <div> -->
+          <label for="tel2">Telefone 2</label>
+          <input type="tel" name="contactos" id="clienteTel2">
+          <!-- </div> -->
+          <!-- </div> -->
+          <label for="clienteMorada"><span class="camposObrigatorio">*</span>Morada</label>
+          <input type="text" id="clienteMorada" required>
+          <!-- <div class="contactosContainer"> -->
+          <!-- <div> -->
+          <label for="rendimento_anual_bruto">Rendimento Anual Bruto</label>
+          <input type="number" id="clienteRendimentoAnualBruto" min="0" required>
+          <!-- </div> -->
+          <!-- <div> -->
+          <label for="clientePatrimonioLiquido">Patrimonio Líquido mensal</label>
+          <input type="number" id="clientePatrimonioLiquido" min="0" required>
+          <!-- </div> -->
+          <!-- </div> -->
+        </div>
+
+        <div class="navegationController">
+          <p class="info"></p>
+          <button class="navegationButon" id="navegationButton" type="button">Próximo</button>
+        </div>
+        <button class="btnSalvarDados hide" type="submit">Salvar</button>
+      </form>
+      <%- include('../partials/sideBar')%>
+    </section>
+    <script src="/assets/js/clienteForm.js"></script>
+    <script>
+
+      document.querySelector("#navegationButton").addEventListener("click", (el) => {
+        if (document.querySelector("#clientePassaporte").value !== '' && document.querySelector("#clienteBilhete").value !== '' && document.querySelector("#clienteNascimento").value) {
+          document.querySelector(".form1").classList.toggle('hide');
+          document.querySelector(".form2").classList.toggle('hide');
+          if (!document.querySelector(".form2").classList.contains('hide')) {
+            document.querySelector(".btnSalvarDados").classList.toggle('hide');
+          }
+          document.querySelector(".info").textContent = "";
+          if (!document.querySelector(".form1").classList.contains('hide')) {
+            document.querySelector("#navegationButton").textContent = "Próximo";
+            document.querySelector(".btnSalvarDados").classList.add('hide');
+          } else {
+            document.querySelector("#navegationButton").textContent = "Voltar";
+            document.querySelector(".btnSalvarDados").classList.remove('hide');
+          }
+        } else {
+          document.querySelector(".info").textContent = "Porfavor Preencha todos os campos acima";
+        }
+      })
+    </script>
+    <%- include('../partials/footer')%>
+      <%- include('../partials/pageEnd')%>

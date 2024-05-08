@@ -1,0 +1,28 @@
+<%- include('../../partials/head',{title:'BCU Definição Senha'})%>
+  <%- include('../../partials/funcionariodashboardHeader')%>
+  <%- include('../../partials/sideBarFuncionario')%>
+          <div class="container">
+            <section class="loginContainer">
+                <form class="formContainer" id="funcionarioPasswordForm">
+                    <div>
+                        <label for="passwordAtual">Senha Actual</label>
+                        <input type="password" name="senha" id="passwordAtual" minlength="4" maxlength="16" placeholder="Sua Senha Atual" required>
+                    </div>
+                    <div>
+                        <label for="password">Nova Senha</label>
+                        <input type="password" name="senhaNova" id="passwordNova" minlength="4" maxlength="16" placeholder="Nova Senha" required>
+                    </div>
+                    <div>
+                        <label for="passwordConfirmar">Confirmar nova Senha</label>
+                        <input type="password" name="senhaConfirmar" id="passwordConfirmar" minlength="4" maxlength="16" placeholder="Repetir NovaSenha" required>
+                    </div>
+                    <button type="submit">Salvar</button>
+                </form>
+                <div class="infoContainer">
+                    <p class="info"></p>
+                </div>   
+            </section>
+        </div>
+    <%- include('../../partials/footer')%>
+    <script src="/assets/js/passwordSet.js"></script>
+      <%- include('../../partials/pageEnd')%>

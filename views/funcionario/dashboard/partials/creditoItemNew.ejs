@@ -1,0 +1,10 @@
+<div class="funcionarioCreditoItemHead">
+  <label><span>Crédito: </span> <input type="text" id="creditoItemNome" value=<%=credito.nome%>></label>
+ <label><span>Nº Prestações: </span><input type="text" id="creditoItemNumeroPrestacao" value=<%=credito.duracao%>></label>
+ <label><span>Valor (KZ):</span><input type="text" id="creditoItemValor" value=<%=credito.valor%>></label>
+ <label><span>Taxa (%):</span><input type="text" id="creditoItemTaxa" value=<%=credito.juro%>></label>
+  <div class="levantamentoAction">
+    <a href="#" class="delete-link" id="creditoItemEliminar" data-id=<%=credito.id%>>Eliminar</a>
+    <a href="#" class="update-link" id="creditoItemAtualizar" data-id=<%=credito.id%>>Atualizar</a>
+</div>
+</div>

@@ -1,0 +1,16 @@
+<% const estado=credito.estado;%>
+<div class='creditoItemHead <%=estado%>'>
+    <p><%=credito.nome%></p>
+    <p><%=credito.quantidade%></p>
+    <p><%=credito.comicao%></p>
+    <p><%=credito.totalPagar%></p>
+    <p><%=credito.estado%></p>
+    <p><%=credito.data%>
+    <%if(credito.inicio==NaN){%>
+      <p>Pendente</p>
+      <p>Pendente</p>
+      <%}else{%>
+        <p><%=credito.inicio%></p>
+        <p><%=credito.fim%></p>
+      <%}%>
+</div>

@@ -1,0 +1,20 @@
+<div class="creditoItemHeadAprovacao creditoItems" data-credito=<%=JSON.stringify(credito)%>>
+  <p><%=credito.clienteDados.nome%></p>
+  <p><%=credito.creditoNome%></p>
+    <p><%=credito.quantidade%> KZ</p>
+    <!-- <p><%=credito.comicao%></p> -->
+    <!-- <p><%=credito.totalPagar%></p> -->
+    <!-- <p><%=credito.estado%> -->
+  <p><%=credito.data%></p>
+      <button class="creditoItemsButtons">
+        Gerir
+      </button>
+      <!-- <%if(credito.inicio==null){%>
+      <p>Pendente</p>
+      <p>Pendente</p>
+      <%}else{%>
+        <p><%=credito.inicio%></p>
+        <p><%=credito.fim%></p>
+        <%}%> -->
+</div>
+

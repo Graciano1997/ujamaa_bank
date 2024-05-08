@@ -1,0 +1,30 @@
+<%- include('../../partials/head',{title:'BCU Tipos de Transações'})%>
+  <%- include('../../partials/dashboardHeader')%>
+    <section class="dashboardTransacaoFormContainer">
+      <form class="contaFormContainer borderCurveElements" id="transacaoFormDados">
+          <label for="contaTipo">Tipo de Transação</label>
+          <input type="text"  id="transacaoNome" placeholder="Nova Transação" minlength="4" required>
+      <button class="btnSalvarDados" type="submit">Salvar</button>
+      </form>
+      <%if(transacoes.data.length!==0){%>
+        <div class="transacoesContainer">  
+        <h1>Tipos de Transações</h1>
+          <section class="contasItemContainer">
+            <%transacoes.data.forEach((transacao)=>{%>
+          <%- include('partials/transacaoItem',{transacao:{nome:transacao.nome,id:transacao.id}})%>
+          <% })%>
+        </section>
+        </div>
+          <%} else{%>
+            <div class="contaInfo">
+              <h1>Sem nenhuma tipo de Transação</h1>
+            </div>
+          <%}%>
+        <div class="infoContainer">
+          <p class="info"></p>
+      </div>
+      <%- include('../../partials/sideBarFuncionario')%>
+      </section>
+    <script src="/assets/js/transacaoForm.js"></script>
+    <%- include('../../partials/footer')%>
+      <%- include('../../partials/pageEnd')%>

@@ -1,0 +1,95 @@
+<%- include('../partials/head',{title:'BCU DashBoard-Transferencias'})%>
+<%- include('../partials/dashboardHeader')%>
+<section class="dashboardContainer">
+        <div class="mainAreaCard">
+            <div class="transferenciaContainer">
+                <form class="borderCurveElements" id="transferenciaForm">
+                    <input type="text" name="iban" placeholder="AO06.XXXX.XXXX.XXXX.XXXX.XXXX.X" id="ibanField" minlength="32" maxlength="32" required/>
+                    <input type="number" name="valor" placeholder="Valor" id="valorField" min="10" required/>
+                    <button id="btnTransferirDinheiro">Transferir</button>
+                </form>
+                <div class="infoContainer">
+                    <p class="info"></p>
+                </div>    
+            </div>
+            <div class="movimentoCntainer hideMovimentsGraph">
+                <header>
+                    <h1>Transferências</h1>
+                    <button id="btnHideMovimentos"><div class="rotateItem">V</div></button>
+                </header>
+                <div class="transferenciasItemContainer">
+                    <%transferencias.forEach((transferencia)=>{%>
+                        <%- include('transferenciaItem',{operacao:transferencia,valor:transferencia.valor,data:transferencia.createdAt,destino:transferencia.destinatario,destinatarioNome:transferencia.destinatarioNome,sobrenome:transferencia.destinatarioSobreNome})%>
+                        <% })%>
+                </div>
+            </div>
+        </div>
+        <div class="modalBox">
+            <div class="creditodetails">
+              <button id="creditoModalClose">X</button>
+              <div class="modalBody">
+                 <h1>aqui</h1>  
+              </div>
+            </div>
+          </div>
+            <%- include('../partials/sideBar')%>
+    </section>
+    <script src="/assets/js/pdf.js"></script>
+    <script>
+      const allvisualizarBtnButtons=document.querySelectorAll('#visualizarBtn');
+      allvisualizarBtnButtons.forEach((btnVisualizar)=>{
+        btnVisualizar.addEventListener('click',()=>{
+            const parentNode=btnVisualizar.parentElement;
+          const objectOperation=JSON.parse(parentNode.getAttribute('data-transferencia'));
+          console.log(objectOperation);
+
+          const templateTransferencia=(object)=>{
+            return `<div class="pdfContainer">
+                <header>
+                  <div class="logoContainerPdf">
+                  <img src="/assets/img/logo.jpg" class="logoImage">
+                  </div>
+                <h3>* OPERAÇÃO TRANSFERÊNCIA *</h3>
+                </header>
+
+              <div class="pdfContainerBody">
+
+              <div class="transferenciaPdfContainer">
+                <div class="origenContainer">
+                    <h3 style="color:purple">Dados Origem </h3>
+                    <p>Nome: ${object.origem.nome} ${object.origem.sobrenome}</p>
+                    <p>Nº Conta: ${object.origem.numero}</p>  
+                    <p>Valor Transferido: ${object.valor} KZ</p>
+              </div>
+              <hr style="color:purple;">
+              <div class="destinatarioContainer">
+                <h3 style="color:purple">Dados Destinatário </h3>
+                <p>Nome: ${object.destinatarioNome} ${object.destinatarioSobreNome}</p>
+                <p>Valor Recebido: ${object.valor} KZ</p>
+              <p>Nº Conta ou Iban: ${object.destinatario}</p>  
+              </div>
+              </div>
+              <hr style="color:purple">
+              <p style="text-align:center">Data: ${object.createdAt}</p>
+              </div>
+              </div>
+            `
+        }
+        html2pdf().from(templateTransferencia(objectOperation)).set({
+          filename: `transferencia_${objectOperation.createdAt}.pdf`,
+          margin: [10, 5, 10, 10], // Specify margins: top, right, bottom, left
+          pagebreak: { mode: 'avoid-all' }, // Avoid page breaks inside content,
+          page: {
+            size: 'A4', // A4 size
+            orientation: 'portrait', // portrait ,'landscape' for landscape orientation
+          }}).save();
+        });
+    });
+        
+    </script>
+    <!-- <script src="/assets/js/transferenciaForm.js"></script>
+    <script src="/assets/js/transferenciaForm.js"></script> -->
+
+ 
+    <%- include('../partials/footer')%>
+    <%- include('../partials/pageEnd')%>

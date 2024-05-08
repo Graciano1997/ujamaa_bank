@@ -1,0 +1,21 @@
+<%- include('../partials/head',{title:'BCU DashBoard-Cartões'})%>
+<%- include('../partials/dashboardHeader')%>
+<section class="dashboardContainer">
+        <div class="mainAreaCard">
+            <div class="cartaoContainer">
+                <h1 id="bankCardLogo">BCU</h1>
+                <p class="saldo"><span>KZ</span> <span><%=saldo%></span></p>
+               <img id="chip" src="/assets/img/chip.jpg" />
+               <div class="cardDetails">
+                <p><%=nome%></p>
+               </div>
+            </div>
+            <div class="levantamentos">
+                <h1>MOVIMENTOS</h1>
+
+            </div>
+        </div>
+            <%- include('../partials/sideBar')%>
+    </section>
+    <%- include('../partials/footer')%>
+    <%- include('../partials/pageEnd')%>

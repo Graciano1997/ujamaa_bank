@@ -1,0 +1,46 @@
+<%- include('../partials/head',{title:'BCU Cadastrar Funcionário'})%>
+  <%- include('../partials/headerFuncionario')%>
+    <div class="container funcionarioCadastrar">
+      <section class="loginContainer">
+        <form class="formContainer" id="registerFormFuncionario">
+          <div>
+            <label for="funcionarioNome">Nome</label>
+            <input type="text" name="nome" id="funcionarioNome" placeholder="Nome completo" required>
+          </div>
+
+          <div>
+            <label for="funcionarioSexo">Sexo</label>
+            <select name="sexo" id="funcionarioSexo">
+              <option value="Masculino">Masculino</option>
+              <option value="Femenino">Femenino</option>
+            </select>
+          </div>
+          <div>
+            <label for="funcionarioEmail">Email</label>
+            <input type="email" name="email" id="funcionarioEmail" placeholder="Email" required>
+          </div>
+          <div>
+            <label for="funcionarioMorada">Morada</label>
+            <input type="morada" name="morada" id="funcionarioMorada" placeholder="Morada" required>
+          </div>
+          <div>
+            <label for="funcionarioPassword">Senha</label>
+            <input type="password" name="senha" minlength="4" maxlength="16" id="funcionarioPassword" placeholder="Senha" required>
+          </div>
+          <div>
+            <label for="password">Confirm Senha</label>
+            <input type="password" minlength="4" maxlength="16" name="senha-confirma" id="funcionarioPasswordConfirm"
+              placeholder="Repetir Senha" required>
+          </div>
+          <button type="submit" id="funcionarioCadastrarBtn">Cadastrar</button>
+        </form>
+        <p class="linkConta">Já tem Conta ? <br /> <a href="/funcionario/login">Login</a></p>
+        <div class="infoContainer">
+          <p class="info"></p>
+        </div>
+        <a href="/recuperacao" id="recuperarCredencias">Recuperar suas Credenciais</a>
+      </section>
+    </div>
+    <%- include('../partials/footer')%>
+    <script src="/assets/js/funcionarioHandler.js"></script>
+      <%- include('../partials/pageEnd')%>

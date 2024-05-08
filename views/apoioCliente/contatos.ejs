@@ -1,0 +1,80 @@
+<%- include('../partials/head',{title:'BCU Linha 24H'})%>
+  <%- include('../partials/header')%>
+  <%- include('../partials/carrocel')%>
+  <section class="contatosContainer">
+        <h1>Nossos Contactos e Network</h1>
+        <div class="contatosArea">
+          <div>
+            <a href="tel:+244935636086">
+              <img src="/assets/img/africell.png" alt="Africel">
+            </a>
+          </div>
+          <div>
+            <a href="tel:+244924089103">
+              <img src="/assets/img/orangeUnitel.png" alt="Unitel">
+            </a>
+          </div>
+          <div>
+            <a href="https://wa.me/244948862549">
+              <img src="/assets/img/whatsapp.png" alt="whatsapp_logo">
+            </a>
+          </div>
+          <div>
+            <a href="mailto:bancocomercialujama@gmail.com">
+              <img src="/assets/img/gmail_logo.jpg" alt="gmail_logo">
+            </a>
+          </div>
+        </div>
+        <h1>Ou Escreva Para Nós</h1>
+        <div class="formMessageContainer">
+          <form class="formMessage" id="formMessage">
+            <label for="clientEmail">
+              Seu Email
+            </label>
+            <input type="email" name="clientEmail" id="clientEmail" required>
+            <label for="clientMessage">
+              Sua Mensagem
+            </label>
+            <textarea name="clientMessage" id="clientMessage" placeholder="Escreva Aqui a sua Mensagem" required></textarea>
+            <button type="submit">
+              Enviar
+            </button>
+            <div class="infoContainer">
+              <p class="info"></p>
+          </div>
+          </form>
+
+        </div>
+    </section>
+  
+    <%- include('../partials/footerlandpage')%>
+      <%- include('../partials/pageEnd')%>
+
+      <script>
+        const formMessage=document.querySelector('#formMessage');
+        if(formMessage!==null){
+          formMessage.addEventListener('submit', async (el)=>{
+            el.preventDefault();
+            try {
+              const response= await fetch('https://formspree.io/f/moqgrokp',{
+                headers:{'Content-Type':'application/json'},
+                method:'POST',
+                body:JSON.stringify({
+                  email:document.querySelector('#clientEmail').value,
+                  message:document.querySelector('#clientMessage').value
+                })
+              });
+              const data = await response.json();
+              if(data.ok){
+                infoParaph.textContent = "Mensagem Enviada Com Sucesso!";
+                infoParaph.classList.remove('infoError');
+              }else{
+                infoParaph.textContent = "Sua Mensagem Não foi Enviada, Checa a sua conexão ou Email!";
+                infoParaph.classList.add('infoError');
+              }
+            } catch (error) {
+              console.error(error);
+            }
+          })
+        }
+      </script>

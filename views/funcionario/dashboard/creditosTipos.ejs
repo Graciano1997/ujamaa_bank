@@ -1,0 +1,26 @@
+<%- include('../partials/head',{title:'BCU DashBoard-Créditos'})%>
+<%- include('../../partials/funcionariodashboardHeader')%>
+<section class="dashboardContainer">
+  <div class="dashboardUserDadosFormContainer">
+    <%if(creditoTipos!==null && creditoTipos.length!==0){%>
+    <div class="creditoItemContainer">
+      <%creditoTipos.forEach((creditotipo)=>{%>
+      <div class="creditoDiv" data-creditoId=<%=creditotipo.id%>>
+        <h1><%=creditotipo.nome%></h1>
+        <p>Taxa(%): <%=creditotipo.juro%></p>
+        <p>Comições: <%=creditotipo.comicao%></p>
+        <p>Duração (meses): <%=creditotipo.duracao%></p>
+        <p>Valor (KZ): <%=creditotipo.valor%></p>
+      </div>
+      <%})%>
+      <a href="/">Ver Créditos Solicitados</a>
+    <%}else{%>
+    <h4>Não há nenhum tipo de crédito</h4>
+    <%}%>
+  </div>
+
+            <%- include('../partials/sideBar')%>
+</section>
+<script src="/assets/js/creditoForm.js"></script>
+<%- include('../partials/footer')%>
+<%- include('../partials/pageEnd')%>

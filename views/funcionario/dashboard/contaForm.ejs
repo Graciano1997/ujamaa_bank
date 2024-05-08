@@ -1,0 +1,30 @@
+<%- include('../../partials/head',{title:'BCU Tipos de Conta'})%>
+<%- include('../../partials/funcionariodashboardHeader')%>
+    <section class="dashboardContasFormContainer">
+      <form class="contaFormContainer borderCurveElements" id="contaFormDados">
+          <label for="contaTipo">Tipo de Conta</label>
+          <input type="text"  id="contaTipo" placeholder="novo">
+      <button class="btnSalvarDados" type="submit">Salvar</button>  
+    </form>
+    <%if(contas && contas.data && contas.length!==0){%>
+      <div class="contasTiposContainer">
+        <h1>Tipos de Contas</h1>
+        <section class="contasItemContainer">
+          <%contas.data.forEach((conta)=>{%>
+        <%- include('partials/contaItem',{conta:{nome:conta.nome,id:conta.id}})%>
+        <% })%>
+      </section>
+      </div>
+        <%} else{%>
+          <div class="contaInfo">
+            <h1>Sem nenhuma tipo de Conta</h1>
+          </div>
+        <%}%>
+      <div class="infoContainer">
+        <p class="info"></p>
+    </div>
+      <%- include('../../partials/sideBarFuncionario')%>
+    </section>
+    <script src="/assets/js/contaForm.js"></script>
+    <%- include('../../partials/footer')%>
+      <%- include('../../partials/pageEnd')%>

@@ -1,0 +1,28 @@
+<%- include('../../partials/head',{title:'BCU Definição de Email'})%>
+<%- include('../../partials/funcionariodashboardHeader')%>
+  <%- include('../../partials/sideBarFuncionario')%>
+          <div class="container">
+            <section class="loginContainer">
+                <form class="formContainer" id="funcionarioEmailForm">
+                    <div>
+                        <label for="emailAtual">Email Actual</label>
+                        <input type="email" name="emailAtual" id="emailAtual" placeholder="Seu Email atual" required>
+                    </div>
+                    <div>
+                        <label for="emailNovo">Novo Email</label>
+                        <input type="email" name="emailNovo" id="emailNovo" placeholder="Novo Email" required>
+                    </div>
+                    <div>
+                        <label for="emailNovoConfirmacao">Novo Email</label>
+                        <input type="email" name="emailNovoConfirmacao" id="emailNovoConfirmacao" placeholder="Repetir Email" required>
+                    </div>
+                    <button type="submit" id="updateNewEmailBtn">Salvar</button>
+                </form>
+                <div class="infoContainer">
+                    <p class="info"></p>
+                </div>   
+            </section>
+        </div>
+<%- include('../../partials/footer')%>
+<script src="/assets/js/emailSet.js"></script>
+<%- include('../../partials/pageEnd')%>

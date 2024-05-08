@@ -1,0 +1,51 @@
+<%- include('../partials/head',{title:'BCU DashBoard-Créditos'})%>
+<%- include('../partials/dashboardHeader')%>
+<section class="dashboardContainer">
+        <div class="dashboardUserDadosFormContainer">
+            <h1>Créditos</h1>
+            <form class="dashboardUserDadosForm borderCurveElements" id="clienteFormCredito">
+                <div class="informacoesPessoais">
+                  <label for="estatuto">Estatuto Profissional</label>
+                  <input type="text" id="clienteEstatuto">
+                  <label for="numeroFilhos">Número de Filhos</label>
+                  <input type="number" id="clienteNumeroFilho" min="0">
+                  <label for="tel2">Telefone Secundário</label>
+                  <input type="tel" name="contactos" id="clienteTel2">
+                    <label for="clienteCasaPropria">Possuis Casa Própria ?</label>
+                    <select name="casa_propria" id="clienteCasaPropria">
+                      <option value=<%=true%>>Sim</option>
+                      <option value=<%=false%>>Não</option>
+                    </select>
+            
+              </div>              
+              <div class="informacoesPessoais">
+                <label for="rendimento_anual_bruto">Rendimento Anual Bruto</label>
+                <input type="number" id="clienteRendimentoAnualBruto" min="0" required>
+                <label for="clientePatrimonioLiquido">Patrimonio Líquido mensal</label>
+                <input type="number" id="clientePatrimonioLiquido" min="0" required>
+                <label for="clientevalorDesejado">Valor Desejado</label>
+                <input type="range" id="clientevalorDesejado" min="0" value=<%=creditoTipo.valor%> max=<%=creditoTipo.valor%> required>
+                <span id="clientevalorDesejadValor">KZ <%= creditoTipo.valor%></span>
+                <input type="hidden" name="creditoId" value=<%=creditoTipo.id%> id="creditoTipoId">
+                  <!-- <div class="creditoSelecionado">
+                    <p>A designação Comercial do Produto que você selecionou é o Crédito <b><%//=creditoTipo.nome%></b>.</p>
+                    <p>Este Crédito te habilitará a receber o valor total de <b><%//=creditoTipo.valor%></b> na moeda Kwanza</p>
+                    <p>Possuiras <%=//creditoTipo.duracao%> meses uteis para poder fazer o pagamento das <%=//creditoTipo.comicao%> comições acrescentada a taxa de <%=//creditoTipo.juro%>%</p>
+                </div> -->
+              </div>
+              <button class="btnSalvarDados">Solicitar</button>
+              </form>
+              <div class="infoContainer">
+                <p class="info"></p>
+            </div>
+        </div>
+            <%- include('../partials/sideBar')%>
+    </section>
+    <script src="/assets/js/credito.js"></script>
+    <script>
+      document.getElementById('clientevalorDesejado').addEventListener('input', function() {
+          document.getElementById('clientevalorDesejadValor').textContent ='KZ ' + this.value;
+      });
+  </script>
+    <%- include('../partials/footer')%>
+    <%- include('../partials/pageEnd')%>

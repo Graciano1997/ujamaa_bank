@@ -1,0 +1,20 @@
+<%- include('../partials/head',{title:'BCU Cartões'})%>
+  <%- include('../partials/header')%>
+    <%- include('../partials/carrocel')%>
+      <section class="cartoesContainer">
+        <h1>Nossos Cartões</h1>
+        <h2>Cartão Débito</h2>
+        <p>Um cartão associado à sua conta que lhe permite tomar acções como pagar, tranferir e consultar o seu
+          saldo.</p>
+          <div class="cartaoContainer">
+            <h1 id="bankCardLogo">BCU</h1>
+            <p class="saldo"><span>KZ</span> <span><%="100.000"%></span></p>
+           <img id="chip" src="/assets/img/chip.jpg" />
+           <div class="cardDetails">
+            <p><%="Nome do Cliente"%></p>
+           </div>
+        </div>
+      </section>
+
+      <%- include('../partials/footerlandpage')%>
+        <%- include('../partials/pageEnd')%>

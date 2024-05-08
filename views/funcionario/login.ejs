@@ -1,0 +1,27 @@
+
+<%- include('../partials/head',{title:'BCU Login Funcionário'})%>
+<%- include('../partials/headerFuncionario')%>
+<div class="containerFuncionario">
+    <section class="loginContainer">
+        <form class="formContainer" id="loginFormFuncionario">
+            <div>
+                <label for="email">Email</label>
+                <input type="email" name="funcionarioEmailLogin" id="funcionarioEmailLogin" placeholder="Email" required>
+            </div>
+            <div>
+                <label for="password">Senha</label>
+                <input type="password" name="senha" id="funcionarioPasswordLogin" placeholder="Senha" required>
+            </div>
+            <button type="submit" id="loginBtnFuncionario">Entrar</button>
+        </form>
+        <p class="linkConta">Não tem Conta ? <br/><a href="/funcionario/cadastrar">Cadastrar</a></p>
+        <div class="infoContainer">
+            <p class="info"></p>
+        </div>   
+        <a href="/recuperacao" id="recuperarCredencias">Recuperar suas Credenciais</a>
+    </section>
+</div>
+
+    <%- include('../partials/footer')%>
+    <script src="/assets/js/funcionarioHandler.js"></script>
+<%- include('../partials/pageEnd')%>

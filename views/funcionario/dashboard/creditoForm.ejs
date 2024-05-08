@@ -1,0 +1,62 @@
+<%- include('../../partials/head',{title:'BCU Tipos de Conta'})%>
+<%- include('../../partials/funcionariodashboardHeader')%>
+    <section class="dashboardDadosFormContainer">
+      <div class="creditoFormContainer">
+        <form class="borderCurveElements" id="creditoFormDados">
+   <div>
+     <label for="creditoTipo">Tipo de Crédito</label>
+     <input type="text"  id="creditoTipo" placeholder="Nome do Crédito" required>
+     <label for="creditoPrazo">Prazo do Crédito</label>
+     <input type="number"  id="creditoMes" placeholder="Número máximo de duração em meses do crédito" min="1" step="1" required>
+   </div>
+   <div>
+    <label for="creditoValor">Valor</label>
+    <input type="number"  id="creditoValor" placeholder="Dinheiro em Kwanza" min="0" required>
+    <label for="creditoComicao">Nº de Prestações</label>
+    <input type="number" id="creditoComicao" placeholder="Número máximo das prestações a pagar" min="0" required>
+    <label for="creditoTaxaJuro">Taxa de Juros (%)</label>
+    <input type="number"  id="creditoTaxaJuro" min="0" placeholder="Taxa do crédito" step="0.1" required>
+   </div>
+    
+      <button class="btnSalvarDados" type="submit">Salvar</button>  
+      <div class="infoContainer">
+        <p class="info"></p>
+    </div>
+    </form>
+      </div>
+
+    <%if(creditos.data.length!==0){%>
+      <div class="creditosTiposContainer">
+        <h1>Créditos</h1>
+        <section class="contasItemContainer">
+          <div class="funcionarioCreditoItemHead Heading">
+            <span>Crédito</span>
+           <span>Prestações</span>
+           <span>Valor (KZ)</span>
+           <span>Taxa (%)</span>
+            <div class="levantamentoAction">
+          </div>
+          </div>
+          <%creditos.data.forEach((credito)=>{%>
+        <%- include('partials/creditoItemNew',{credito:credito})%>
+        <% })%>
+      </section>
+      </div>
+        <%} else{%>
+          <div class="contaInfo">
+            <h1>Sem nenhum tipo de Crédito</h1>
+          </div>
+        <%}%>
+      <%- include('../../partials/sideBarFuncionario')%>
+    </section>
+    <script src="/assets/js/creditoForm.js"></script>
+    <script>
+      document.querySelector("#creditoMes").addEventListener('input',(el)=>{
+        document.querySelector("#creditoComicao").value=el.target.value;
+      });
+      document.querySelector("#creditoComicao").addEventListener('input',(el)=>{
+        document.querySelector("#creditoMes").value=el.target.value;
+      });
+    </script>
+    <%- include('../../partials/footer')%>
+      <%- include('../../partials/pageEnd')%>

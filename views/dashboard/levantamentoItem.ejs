@@ -1,0 +1,21 @@
+<div class="levantamentoItem">
+    <p class="cabecalhoItem"><span><%=valor%></span> <span>KZ</span></p>
+    <%
+    let dia=(new Date(data).getDate()<10)?`0${new Date(data).getDate()}`:`${new Date(data).getDate()}`;   
+    let mes=((new Date(data).getMonth()+1)<10)?`0${new Date(data).getMonth()+1}`:`${new Date(data).getMonth()+1}`;   
+    let ano=new Date(data).getFullYear();   
+    let hora=(new Date(data).getHours()<10)?`0${new Date(data).getHours()}`:`${new Date(data).getHours()}`;   
+    let min=(new Date(data).getMinutes()<10)?`0${new Date(data).getMinutes()}`:`${new Date(data).getMinutes()}`;   
+    %>
+
+    <p class="cabecalhoItem codeMobile">
+        <span><%=`${dia}-${mes}-${ano}|${hora}:${min}`%></span>  
+    </p>
+    <p class="cabecalhoItem"><span>Code:<%=code%></span></p>
+    <div class="levantamentoAction" data-operation=<%=JSON.stringify(operation)%>>
+        <%if(!feito){%>
+            <button id="levantamentoCancelar">Cancelar</button>
+        <%}%>
+        <button id="levantamentoExportar">Exportar</button>
+    </div>
+</div>

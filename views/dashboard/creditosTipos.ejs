@@ -1,0 +1,41 @@
+<%- include('../partials/head',{title:'BCU DashBoard-Créditos'})%>
+  <%- include('../partials/dashboardHeader')%>
+    <section class="dashboardContainer">
+      <div class="dashboardUserDadosFormContainer">
+        <%if(creditoTipos!==null && creditoTipos.length!==0){%>
+          <div class="creditoItemContainer">
+            <%creditoTipos.forEach((creditotipo)=>{%>
+              <div class="creditoDiv" data-creditoId=<%=creditotipo.id%>>
+                <h1>
+                  <%=creditotipo.nome%>
+                </h1>
+                <p>Taxa: <%=creditotipo.juro%>%</p>
+                <p>Comições (max): <%=creditotipo.comicao%>
+                </p>
+
+                <%if(creditotipo.duracao===1){%>
+                  <p>Duração (max): <%=creditotipo.duracao%> mês</p>
+                  <%}else{%>
+                    <p>Duração (max): <%=creditotipo.duracao%> meses</p>
+                <%}%>
+                <p>Dinheiro (KZ): <%=creditotipo.valor%></p>
+              </div>
+            <%})%>
+          </div>
+          <%if(creditoUser!==0){%>
+            <a href="/dashboard/creditos_utilizador" class="verCreditos">Ver Créditos Solicitados</a>
+            <%}else{%>
+              <p class="verCreditos">Notamos que ainda não solicitaste nenhum crédito </p>
+              <p class="verCreditos">Escolha um dos creditos acima, clicando na sua Box</p>
+            <%}%>
+      </div>
+          
+        <%}else{%>
+        <h4>Creditos Indisponiveis no momento</h4>
+        <%}%>
+      </div>
+          <%- include('../partials/sideBar')%>
+    </section>
+    <script src="/assets/js/creditoForm.js"></script>
+    <%- include('../partials/footer')%>
+      <%- include('../partials/pageEnd')%>

@@ -1,0 +1,179 @@
+<%- include('../partials/head',{title:'BCU DashBoard-Créditos'})%>
+  <%- include('../partials/dashboardHeader')%>
+    <section class="dashboardContainer">
+      <div class="dashboardUserDadosFormContainerCredito">
+        <form class="dashboardcreditoForm borderCurveElements" id="clienteFormCredito">
+          <label for="clientecreditoDesejado">Descrição do Produto</label>
+          <input type="text" id="clientecreditoDesejado" value=<%=creditoTipo.nome%> readonly>
+          <%if(creditoTipo.duracao>1){%>
+            <label for="clientecreditoDuracao">Duração máxima (meses)</label>
+            <%}else{%>
+              <label for="clientecreditoDuracao">Duração máxima (mês)</label>
+              <%}%>
+                <input type="number" id="clientecreditoDuracao" value=<%=creditoTipo.duracao%> readonly>
+                <label for="clientevalorDesejado">Valor do Crédito</label>
+                <input type="number" id="clientevalorDesejado" min="0" value=<%=creditoTipo.valor%> max=
+                <%=creditoTipo.valor%> required>
+                  <label for="clientecomicaoDesejado">Prestações</label>
+                  <input type="number" id="clientecomicaoDesejado" min="1" value=<%=creditoTipo.duracao%> max=
+                  <%=creditoTipo.duracao%> required>
+                    <input type="hidden" name="creditoId" value=<%=creditoTipo.id%> id="creditoTipoId">
+                    <div class="creditoFormOperation">
+                      <button class="btnSalvarDados" id="creditoSolicitarBtn" type="button">Solicitar</button>
+                      <button class="btnSalvarDados" id="simulador" type="button">Simulador</button>
+                    </div>
+                    <div class="infoContainer">
+                      <p class="infoCredito"></p>
+                    </div>
+        </form>
+
+      </div>
+      <div class="modalSolicitarCredito">
+        <div class="creditodetails">
+          <button id="creditoModalClose">X</button>
+          <div class="creditoUserDataCredito">
+            <div class="creditoFichaDescription">
+              <header>
+                <div class="logoContainerCredito">
+                  <img src="/assets/img/logo.jpg" class="logoImage">
+                </div>
+                <div>
+                  <h2 id="creditoUserDataCreditoHeader">Contrato de Adesão do Produto</h2>
+                  <h4>
+                    Crédito: <%=creditoTipo.nome%>
+                  </h4>
+                </div>
+              </header>
+  
+              <div class="creditoUserDataCreditoBody">
+                <p>
+                  Entre o <span>Banco Comercial Ujamaa</span>, doravante denominado "Credor", e o
+                  Cliente <span>
+                    <%=cliente.nome%>
+                  </span> <span><%=cliente.sobrenome%></span>, titular da conta número <span id="contaNumero">
+                    <%=cliente.numero%>
+                  </span>,
+                  doravante denominado "Devedor",
+                  celebram o presente contrato de crédito nos termos e condições seguintes:
+                </p>
+                <h3>
+                  Objeto do Contrato
+                </h3>
+                <p>
+                  O presente contrato tem como objeto a concessão de um crédito ao Devedor pelo Credor,
+                  conforme os termos e condições aqui estabelecidos.
+                </p>
+                <h3>
+                  Designação Comercial do Produto:
+                </h3>
+                <p>
+                  O produto selecionado é o Crédito <span>
+                    <%=creditoTipo.nome%>
+                  </span>, que permite ao
+                  Devedor receber o valor total de <span id="valorReceber"></span> na moeda Kwanza.
+                </p>
+  
+                <h3> Montante do Crédito e Condições de Reembolso</h3>
+                <p>
+                  O valor total do crédito concedido ao Devedor é de <span id="valorPagar"></span>. Este valor será reembolsado em
+                  <span id="prestacaoPagar"></span> prestações mensais, cada uma no valor de <span id="valorPagarMensal"></span>, conforme acordado entre as
+                  partes. Isto é devolvendo ao banco um valor total de <span id="valorPagarTotal"></span>
+                </p>
+  
+                <h3>Prazo e Condições de Pagamento</h3>
+                <p>
+                  O Devedor terá <span id="prestacaoPagarMeses"></span> <span id="mesesUteis"></span> para efetuar o pagamento das comissões, acrescidas da taxa
+                  mensal de <span id="creditoTaxa">
+                    <%=creditoTipo.juro%>
+                  </span>%.
+                </p>
+                <h3>
+                  Responsabilidades do Devedor
+                </h3>
+                <p>
+                  O Devedor compromete-se a efetuar os pagamentos de acordo com as condições estabelecidas neste contrato,
+                  bem como a cumprir todas as obrigações adicionais previstas.
+                </p>
+                <h3>
+                  Penalidades por Incumprimento
+                </h3>
+                <p>
+                  Em caso de incumprimento por parte do Devedor, serão aplicadas as penalidades previstas nos termos deste
+                  contrato, incluindo juros de mora e outras sanções aplicáveis.
+                </p>
+  
+                <h3>
+                  Foro
+                </h3>
+                <p>
+                  Em prova de concordância, as partes assinam o presente contrato em <span>
+                    <%=new Date()%>
+                  </span>.
+                </p>
+  
+              </div>
+              <div class="termosBox">
+                <label for="agreeBox">Concordo com os Termos e Condições</label>
+                <input type="checkbox" name="agree" id="agreeBox">
+              </div>
+            </div>
+  
+            <button class="btnSalvarDados" id="exportarContratoBtn" type="button">Exportar</button>
+            <button class="btnSalvarDados hide" id="creditoSolicitarBtnSave" type="submit">Solicitar Crédito</button>
+            <div class="infoContainer">
+              <p class="info"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+   
+    <script src="/assets/js/credito.js"></script>
+    <script src="/assets/js/pdf.js"></script>
+    <script>
+      document.getElementById('exportarContratoBtn').addEventListener('click',()=> {
+          const element = document.querySelector('.creditoFichaDescription');
+          html2pdf().from(element).set({
+    filename: 'Ficha_Contrato_Credito.pdf',
+    fileTitle:'Contrato_Credito',
+    // margin: [20, 5, 20, 5], // Specify margins: top, right, bottom, left
+    // pagebreak: { mode: 'avoid-all' }, // Avoid page breaks inside content,
+    page: {
+            size: 'A4', // A4 size
+            orientation: 'portrait', // portrait ,'landscape' for landscape orientation
+            // margin: [10, 20, 30, 40] // top, right, bottom, left
+        }
+}).save();
+
+      });
+
+      document.querySelector("#agreeBox").addEventListener("change", (el) => {
+        const termStatus = el.target.checked;
+        if (termStatus) {
+          document.querySelector("#creditoSolicitarBtnSave").classList.remove('hide');
+        } else {
+          document.querySelector("#creditoSolicitarBtnSave").classList.add('hide');
+        }
+      })
+      
+      const maxValue=document.querySelector("#clientevalorDesejado").max*1;
+      const maxTime=document.querySelector("#clientecomicaoDesejado").max*1;
+      document.querySelector("#creditoSolicitarBtn").addEventListener("click", () => {
+        if((document.querySelector("#clientevalorDesejado").value>maxValue || document.querySelector("#clientecomicaoDesejado").value>maxTime)){
+          document.querySelector(".infoCredito").textContent= "Certifica -se de não ultrapassar a quantidade máxima de dinheiro disponibilizado nem o número das prestações";
+        }else if((document.querySelector("#clientevalorDesejado").value<1000*1 || document.querySelector("#clientecomicaoDesejado").value<1)){
+          document.querySelector(".infoCredito").textContent= "Certifica - se de não solicitar uma quantidade abaixo do valor mínimo, nem o número das prestações minima";
+        }
+        else{
+           document.querySelector(".modalSolicitarCredito").style.left = "0";
+           document.querySelector('#body').style.overflowY = "hidden";
+        }
+      });
+      document.querySelector("#creditoModalClose").addEventListener("click", () => {
+        document.querySelector(".modalSolicitarCredito").style.left = "-100%";
+        document.querySelector('#body').style.overflowY = "scroll";
+      });
+    </script>
+          <%- include('../partials/sideBar')%>
+    <%- include('../partials/footer')%>
+      <%- include('../partials/pageEnd')%>

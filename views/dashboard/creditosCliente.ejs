@@ -1,0 +1,64 @@
+<%- include('../partials/head',{title:'BCU Meus Créditos'})%>
+  <%- include('../partials/dashboardHeader')%>
+    <section class="dashboardContainer">
+      <div class="dashboardUserDadosFormContainer mobile">
+        <%if(creditosCliente!==null && creditosCliente.length!==0){%>
+          <!-- <div class="creditoItemContainer"> -->
+          <div class="meusCreditoContainer">
+            <h1>Meus Créditos</h1>
+            <%creditosCliente.forEach((creditoItem)=>{%>
+              <div class='userCreditoItemContainer <%=creditoItem.estado%>'>
+                <h3>Produto: <%=creditoItem.nome%></h3>
+                <p>Quantia: <%=creditoItem.quantidade%> KZ</p>
+                <p>Partições: <%=creditoItem.comicao%></p>
+                <p>Total a Pagar: <%=creditoItem.totalPagar%> KZ</p>
+                <p>Estado: <%=creditoItem.estado%></p>
+                <p>Data de Solitação: <%=creditoItem.data%>
+                </p>
+                <%if(creditoItem.inicio==null){%>
+                  <p>Inicio: Pendente</p>
+                  <p>Fim: Pendente</p>
+                  <%}else{%>
+                    <p>Inicio: <%=creditoItem.inicio%>
+                    </p>
+                    <p>Fim: <%=creditoItem.fim%>
+                    </p>
+                    <%}%>
+                  </div>
+                  <%})%>
+                </div>
+            <%}%>
+      </div>
+
+
+
+      <div class="dashboardUserDadosFormContainer desktop">
+        <%if(creditosCliente!==null && creditosCliente.length!==0){%>
+          <!-- <div class="creditoItemContainer"> -->
+          <div class="meusCreditoContainer">
+            <h1>Meus Créditos</h1>
+            <div class="creditoItemHead">
+              <b>Produto</b>
+              <b>Quantia (KZ)</b>
+              <b>Partições</b>
+              <b>Total a Pagar (KZ)</b>
+              <b>Estado</b>
+              <b>Data (Solitação)</b>
+              <b>Inicio</b>
+              <b>Fim</b>
+            </div>
+            <%creditosCliente.forEach((creditoItem)=>{%>
+              <%- include('partials/creditoItem',{credito:creditoItem})%>
+                <%})%>
+          </div>
+      </div>
+
+      <%}else{%>
+        <h4>Não há nenhum tipo de crédito</h4>
+        <%}%>
+          </div>
+          <%- include('../partials/sideBar')%>
+    </section>
+    <script src="/assets/js/creditoForm.js"></script>
+    <%- include('../partials/footer')%>
+      <%- include('../partials/pageEnd')%>

@@ -1,0 +1,188 @@
+<%- include('../../partials/head',{title:'BCU Créditos Solicitado'})%>
+<%- include('../../partials/funcionariodashboardHeader')%>
+    <section class="dashboardContainer">
+      <div class="dashboardUserDadosFormContainer">
+        <%if(creditosCliente!==null && creditosCliente.length!==0){%>
+          <h1>Créditos Solicitados</h1>
+          <div class="creditoItemHeadAprovacao">
+            <p>Cliente</p>
+            <p>Crédito</p>
+            <p>Valor</p>
+            <p>Data</p>
+          </div>
+          <%creditosCliente.forEach((creditoItem)=>{%>
+            <%console.log(creditoItem);%>
+            <%- include('partials/creditoItem',{credito:creditoItem})%>
+              <%})%>
+      </div>
+      <%}else{%>
+        <h4>Não há nenhum tipo de crédito</h4>
+        <%}%>
+          </div>
+          <div class="creditoModal">
+            <div class="creditodetails">
+              <button id="creditoModalClose">X</button>
+              <header class="creditoClienteAvatar">
+                <img src="/assets/img/user.jpg" alt="bank">
+              </header>
+              <div class="creditoUserData">
+                <div class="personal">
+                  <h5>Nome: <span id="nome"></span> <span id="sobrenome"></span></h5>
+                  <h5>Data Nascimento:<span id="nascimento"></span></h5>
+                  <h5>Estado Civil:<span id="estado"></span></h5>
+                  <h5>Endereço: <span id="morada"></span></h5>
+                  <h5>Nº de Filhos: <span id="numero_filho"></span></h5>
+                  <h5>BI Nº: <span id="bilhete"></span></h5>
+                  <h5>Passaporte Nº: <span id="passaporte"></span></h5>
+                  <h5>Sexo: <span id="sexo"></span></h5>
+                </div>
+                <div class="personal">
+                  <h5>Grau Academico: <span id="nivel"></span></h5>
+                  <h5>Estatuto Profissional: <span id="estatuto_profissional"></span></h5>
+                  <h5>Rendimento Anual: <span id="rendimento_anual_bruto"></span>KZ</h5>
+                  <h5>Patrimonio Liquido Mensal: <span id="patrimonio_liquido"></span>KZ</h5>
+                  <h5>Casa Própria: <span id="casa_propria"></span></h5>
+                </div>
+                <div class="personal">
+                  <h5>Conta Nº: <span id="numero"></span></h5>
+                  <h5>Iban: <span id="iban"></span></h5>
+                  <h5>Saldo Actual: <span id="saldo"></span> kz</h5>
+                  <h5>Contactos: <span id="tlf1"></span> | <span id="tlf2"></span></h5>
+                  <h5>Email: <span id="email"></span></h5>
+                </div>
+              </div>
+              
+              <div class="personalCredito">
+                <div class="headerCredito">
+                  <h2>Dados do Crédito</h2>
+                  <button class="hideBtn"><div class="rotateItem">V</div></button>
+                </div>
+                <div class="personalCreditoItems">
+                  <h5>Credito Solicitado: <span id="creditoNome"></span></h5>
+                  <h5>Valor Solicitado: <span id="quantidade"></span> KZ</h5>
+                  <h5>Nº de Prestações a Pagar: <span id="comicao"></span></h5>
+                  <h5>Total a Pagar ao Banco: <span id="totalPagar"></span> KZ</h5>
+                  <h5>Mensalidade: <span id="mensalidade"></span> KZ</h5>
+                  <h5>Estado: <span id="estadoCredito"></span></h5>
+                  <h5>Data de Solicitação: <span id="data"></span></h5>
+                  <h5>Inicio do Crédito: <span id="inicio"></span></h5>
+                  <h5>Fim do Crédito: <span id="fim"></span></h5>
+                </div>
+              </div>
+
+              <div class="personalCreditoForm borderCurveElements">
+                <form action="">
+                  <div class="formAceite">
+                    <label for="inicioCreditoData">Início do Crédito</label>
+                    <input type="date" name="inicioCredito" id="inicioCreditoData" placeholder="Inicio do Crédito" required>
+                    <label for="inicioCreditoData">Fim do Crédito</label>
+                    <input type="date" name="inicioCredito" id="fimCreditoData" placeholder="Fim do Crédito" readonly>
+                    <button id="aprovarCredito" type="button">Aprovar</button>
+                  </div>
+                  <button id="recusarCredito" class="btnRecusar" type="button">Recusar</button>
+                </form>
+              </div>
+              <div class="infoContainer">
+                <p class="info"></p>
+              </div>
+            </div>
+          </div>
+          <%- include('../../partials/sideBarFuncionario')%>
+    </section>
+    <script>
+
+
+      document.querySelector(".hideBtn").addEventListener("click",(el)=>{
+      document.querySelector(".personalCredito").classList.toggle('showCredito');
+      document.querySelector(".rotateItem").classList.toggle('rotate');
+      });
+      let dataCreditoMesesPagar=null;
+      document.querySelector("#creditoModalClose").addEventListener("click", () => {
+        document.querySelector(".creditoModal").style.left = "-100%";
+        document.querySelector('#body').style.overflowY = "scroll";
+      });
+
+      const allCreditosItems = document.querySelectorAll(".creditoItemsButtons");
+      allCreditosItems.forEach((credito) => {
+        credito.addEventListener("click", (el) => {
+          document.querySelector(".creditoModal").style.left = "0";
+          let dataCredito = JSON.parse(el.target.parentNode.getAttribute('data-credito'));
+          console.log(dataCredito);
+          dataCreditoMesesPagar=dataCredito.comicao;
+          
+           if(dataCredito.estado==="aceite"){
+             document.querySelector(".formAceite").classList.add('ocultar');
+             document.querySelector(".personalCredito").classList.add('aceite');
+             document.querySelector(".btnRecusar").classList.remove('ocultar');
+
+           }
+
+            if(dataCredito.estado==="recusado"){
+              document.querySelector(".formAceite").classList.remove('ocultar');
+              document.querySelector(".btnRecusar").classList.add('ocultar');
+              document.querySelector(".personalCredito").classList.add('recusado');
+            }
+           if(dataCredito.estado==="pendente"){
+             document.querySelector(".btnRecusar").classList.remove('ocultar');
+             document.querySelector(".formAceite").classList.remove('ocultar');
+             document.querySelector(".personalCredito").classList.remove('aceite');
+             document.querySelector(".personalCredito").classList.remove('recusado');
+           }
+
+          const exception1=["clienteDados","clienteConta","estado","creditoAprovacaoId","creditoId"];
+          for (const key in dataCredito) {
+            if(exception1.includes(key)){continue;}
+            if(dataCredito[key]===null){
+              document.querySelector(`#${key}`).textContent='Pendente';
+            }else{
+              document.querySelector(`#${key}`).textContent=dataCredito[key];
+            }
+          }
+          document.querySelector("#estadoCredito").textContent=dataCredito.estado;
+          document.querySelector("#mensalidade").textContent=dataCredito.totalPagar/dataCredito.comicao;       
+          document.querySelector("#aprovarCredito").setAttribute('data-id',JSON.stringify({creditoId:dataCredito.creditoId,creditoAprovacaoId:dataCredito.creditoAprovacaoId})); 
+          document.querySelector("#recusarCredito").setAttribute('data-id',JSON.stringify({creditoId:dataCredito.creditoId,creditoAprovacaoId:dataCredito.creditoAprovacaoId}));
+
+          const exception3=["clienteId","createdAt","updatedAt","id","contaTipoId"];
+          
+          for (const key in dataCredito.clienteConta) {
+            if(exception3.includes(key)){continue}; 
+            
+            if(dataCredito.clienteConta[key]===null){
+              document.querySelector(`#${key}`).textContent='Null';
+            }else{
+                document.querySelector(`#${key}`).textContent=dataCredito.clienteConta[key];
+            }
+            }
+          const exception=["utilizadorId","createdAt","updatedAt","id"];
+          
+          for (const key in dataCredito.clienteDados) {
+            if(exception.includes(key)){continue}; 
+            
+            if(dataCredito.clienteDados[key]===null){
+              document.querySelector(`#${key}`).textContent='Null';
+            }else{
+              document.querySelector(`#${key}`).textContent=dataCredito.clienteDados[key];
+            }
+            }
+
+          document.querySelector('#body').style.overflowY = "hidden";
+        })
+      })
+      
+      document.querySelector("#inicioCreditoData").addEventListener("input",(el)=>{
+        const dataCreditoInicio=new Date(el.target.value);
+        const tempoCreditoMeses=(dataCreditoInicio.getMonth())+dataCreditoMesesPagar;
+        dataCreditoInicio.setMonth(tempoCreditoMeses);
+
+        const dataCreditoFimDia=(dataCreditoInicio.getDate())<10?`0${dataCreditoInicio.getDate()}`:`${dataCreditoInicio.getDate()}`;
+        const dataCreditoFimMes=(dataCreditoInicio.getMonth())<10?`0${dataCreditoInicio.getMonth()+1}`:`${dataCreditoInicio.getMonth()+1}`;
+
+        const dataFim=`${dataCreditoInicio.getFullYear()}-${dataCreditoFimMes}-${dataCreditoFimDia}`;
+        document.querySelector("#fimCreditoData").value=dataFim;
+      });
+    </script>
+
+    <script src="/assets/js/creditoForm.js"></script>
+    <%- include('../../partials/footer')%>
+      <%- include('../../partials/pageEnd')%>

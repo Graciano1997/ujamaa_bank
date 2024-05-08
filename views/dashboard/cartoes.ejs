@@ -1,0 +1,37 @@
+<%- include('../partials/head',{title:'BCU DashBoard-Cartões'})%>
+<%- include('../partials/dashboardHeader')%>
+<section class="dashboardContainerCartao">
+        <div class="mainAreaCard">
+            <div class="cartaoContainer">
+                <h1 id="bankCardLogo">BCU</h1>
+                <p class="saldo"><span>KZ</span> <span><%=saldo%></span></p>
+               <img id="chip" src="/assets/img/chip.jpg" />
+               <div class="cardDetails">
+                <p><%=nome.charAt(0).toUpperCase()+nome.slice(1)%></p>
+               </div>
+            </div>
+            <div class="movimentoCntainer hideMovimentsGraph">
+                <header>
+                    <h2 id="headerMoviments"> Ver Gráfico das movimentações <%=(new Date()).getFullYear()%></h2>
+                    <button id="btnHideMovimentos"><div class="rotateItem">V</div></button>
+                </header>
+                <div class="movimentosContainer">
+                    <canvas id="myChartCard"></canvas>
+                </div>
+            </div>
+        </div>
+            <%- include('../partials/sideBar')%>
+    </section>
+    <script>
+        
+        document.querySelector("#btnHideMovimentos").addEventListener("click",(el)=>{
+            const headerElement=document.querySelector('#headerMoviments');
+        if(!document.querySelector(".movimentoCntainer").classList.contains('hideMovimentsGraph')){
+            headerElement.textContent='Ver Gráfico das movimentações '+ (new Date()).getFullYear();
+        }else{
+            headerElement.textContent='Ocultar Gráfico das movimentações '+ (new Date()).getFullYear();
+            }
+        });
+    </script>
+    <%- include('../partials/footer')%>
+    <%- include('../partials/pageEnd')%>

@@ -1,0 +1,1649 @@
+.dashboardContainer,
+.dashboardContainerCartao,
+.dashboardUserDadosFormContainer,
+.dashboardClienteDadosFormContainer,
+.dashboardDadosFormContainer,
+.dashboardContasFormContainer,
+.dashboardTransacaoFormContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 110vh;
+  /* margin-top: 6.3rem; */
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.651) 30%, rgba(128, 0, 128, 0.74),rgba(255, 255, 255, 0.747));
+  /* background: linear-gradient(white 85%, #6A5ACD); */
+  /* background-image: url('../img/africaWonder.jpg'); */
+  /* background-size: cover; */
+}
+
+.dashboardContainerCartao{
+  height: 115vh;
+}
+
+.dashboardDadosFormContainer,
+.dashboardUserDadosFormContainer{
+  background-color: transparent;
+  height: 100%;
+}
+
+.dashboardUserDadosFormContainerCredito{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: inherit;
+}
+/* .dashboardContainer{height: 100%;} */
+
+#creditoFormDados{
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.dashboardcreditoForm{
+  display: flex;
+  flex-direction: column;
+justify-content: center;
+margin-top: 3rem;
+width: 70%;
+align-self: center;
+}
+.dashboardcreditoForm input,
+.dashboardcreditoForm label
+{
+  padding: 0.5rem;
+}
+
+
+#contaNome,
+#transacaoNomeField,
+/* #creditoNome, */
+#creditoPrazo{
+  background-color: transparent;
+  border: transparent;
+  padding: 0.2rem;
+  font-size: 18px;
+  color: black;
+}
+
+.creditoItemContainerFuncionario label input{
+  background-color: transparent;
+  border: transparent;
+  color: white;
+  padding-left: 3px;
+}
+
+
+.dashboardUserDadosFormContainer h1,
+.dashboardTransacaoFormContainer h1,
+.dashboardContasFormContainer h1
+{
+  padding: 1rem;
+}
+
+#contaNome:focus,
+#transacaoNomeField:focus,
+#creditoNome:focus,
+#creditoPrazo:focus,
+.creditoItemContainerFuncionario label input:focus,
+.funcionarioCreditoItemHead label input:focus
+{
+  outline-width: 1px;
+  outline-color: purple;
+}
+.creditoItemContainerFuncionario label input:active,
+.creditoItemContainerFuncionario label input:focus{
+  outline-color: purple;
+}
+
+.cabecalhoItem{
+  padding: 5px 8px 0 2px;
+}
+
+.dashboardDadosFormContainer h1{
+  margin: 0 2rem 1rem 2rem;
+}
+
+.verCreditos{
+  text-align: center;
+  color: white;
+  margin-top: 1rem;
+}
+
+.utilizadorContainer{
+  background: linear-gradient(rgba(53, 2, 53, 0.89),rgb(52, 7, 95));
+  margin-top: 2rem;
+  border-radius: 8px;
+  display: flex;
+  gap: 10px;
+  width: 350px;
+  align-self: center;
+  height: 500px;
+  flex-direction: column;
+  align-items: center;
+  transition: all 1s ease-in-out;
+}
+
+.utilizadorContainer:hover{
+  box-shadow: 0 0 12px 15px purple;
+  cursor: pointer;
+}
+
+.utilizadorDados p,
+.utilizadorDados p b{
+  padding: 8px;
+}
+.utilizadorDados ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 15px 0 15px;
+  /* padding-left: 15px; */
+}
+.utilizadorDados ul li {
+  background: linear-gradient(rgba(88, 4, 88, 0.89),rgb(82, 10, 150));
+  border-radius: 8px;
+  margin: 0 0.5rem 0 0.5rem;
+  transition: all 0.5s ease-in-out;
+}
+.utilizadorDados ul li:hover{
+  color: purple;
+  background: white;
+}
+.utilizadorDados ul li p{
+  font-size: 14px;
+}
+.utilizadorDados h3{
+  align-self: center;
+  text-transform: capitalize;
+  font-size: 25px;
+}
+.utilizadorDados .adress{
+  color:rgb(161, 87, 230);
+}
+.utilizadorDados .adress,
+.utilizadorDados .roleUser
+{
+  text-transform: capitalize;
+  align-self: center;
+}
+
+#btnExportar{
+  width: 40%;
+  padding: 0.4rem;
+  border-radius: 8px;
+align-self: center;
+}
+.utilizadorDados{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0.5rem;
+  transition: all 1s ease-in-out;
+  /* font-size: 10px; */
+  justify-content: center;
+  align-items: flex-start;
+}
+.userAvatar{
+  /* display: flex; */
+  margin-top: 15px;
+  width: 100px;
+  height: 100px;
+  transition: all 2s ease-in-out;
+}
+.userAvatar img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.navegationController{
+  align-self: flex-end;
+  margin-top: 1rem;
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+}
+
+.navegationController p {
+  font-size: 12px;
+  /* height: 5px; */
+}
+.dashboardUserDadosForm {
+  margin: 3rem 2rem 0 2rem;
+  /* background: rgba(34, 34, 149, 0.642); */
+  color: white;
+  border-top-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  display: flex;
+  /* height: 400px; */
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1rem;
+  /* overflow-y: scroll; */
+}
+
+.dashboardUserDadosForm select {
+  padding: 0.5rem;
+}
+
+#btnLevantarDinheiro,
+#btnTransferirDinheiro{
+  /* width: 19%; */
+  padding: 0.5rem;
+  align-self: center;
+}
+
+.informacoesPessoais,
+.informacoesAcademicas{
+  margin-top: 1.5rem;
+   display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.dashboardUserDadosForm input {
+  padding: 0.5rem;
+  outline: none;
+  border: transparent;
+}
+
+.defenicoesHeader {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  padding: 0.5rem;
+}
+
+.defenicoesHeader nav ul {
+  display: flex;
+  margin-top: 1rem;
+}
+
+.defenicoesHeader nav ul li a {
+  text-decoration: none;
+  padding: 0.5rem;
+  background-color: white;
+  border-top-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.chocolateContainer {
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 9px);
+  grid-template-rows: repeat(3, 9px);
+  gap: 2px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 1s ease-in-out;
+}
+.chocolateContainer:hover {
+  display: grid;
+  grid-template-columns: repeat(3, 9px);
+  grid-template-rows: repeat(3, 9px);
+  gap: 2px;
+  cursor: pointer;
+  box-shadow: 2px 2px 2px 2px rgb(237, 237, 209) inset;
+}
+.chocolateContainer div {
+  width: 6px;
+  height: 6px;
+  background-color: white;
+  border-radius: 1px;
+  transition: all 1s ease-in-out;
+}
+
+.chocolateContainer div:hover{
+background-color: rgb(43, 2, 39);
+width: 8px;
+height: 8px;
+}
+
+
+.sideBarContainer {
+  /* padding: 0.5rem; */
+  width: 70%;
+  /* border-radius: 8px; */
+  border-bottom-right-radius: 8px;
+  z-index: 7000;
+  /* height: inherit; */
+}
+
+.sideBarContainer nav {
+  margin-top: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  padding-left: 0.5rem;
+  transition: all 2s ease-in-out;
+}
+
+.sideBarContainer nav a {
+  /* text-align: start; */
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 2px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 2s ease-in-out;
+}
+.sideBarContainer nav a:hover{
+  border: 0.3px solid white;
+}
+
+.sideBarContainer nav a img {
+  width: 10%;
+  height: 10%;
+}
+
+/* .linkButton {
+  background-color:red;
+} */
+.linkButton:active {
+  background-color:transparent;
+}
+
+.linkButtonSair {
+  background-color: black;
+  padding: 0.5rem;
+  color: white;
+  text-decoration: none;
+  border: transparent;
+  width: 100%;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.sideBarControler {
+  top: 0;
+  z-index: 8000;
+  position: fixed;
+  color: white;
+  width: 100%;
+  /* background: rgba(34, 34, 149, 0.642); */
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.651) 60%, rgba(128, 0, 128, 0.74));
+  left: -100%;
+  height: 100%;
+  transition: all 0.3s ease-in-out;
+}
+
+.sideBarControler.show {
+  left: 0;
+}
+
+.transferenciaContainer {
+  /* margin-top: 5%; */
+  margin: 0 5% 0 5%;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  /* height: 50%; */
+  /* border-radius: 8px; */
+  /* width: 100%; */
+  border-top-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+.transferenciaContainer form {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 70%;
+  align-self: center;
+}
+
+.transferenciaContainer form input,
+.transferenciaContainer form select{
+  padding: 0.5rem;
+  text-align: left;
+  /* border-radius: 5px; */
+  outline: purple;
+}
+
+button {
+  border: transparent;
+  transition: all 1s ease-in-out;
+}
+
+button:hover{
+  box-shadow: 0 0 8px 10px rgba(128, 0, 128, 0.411);
+
+}
+
+.mainArea {
+  padding-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  /* width: 100%; */
+  height: inherit;
+  gap: 8px;
+  margin-top: 4rem;
+  /* background-color: red; */
+  /* background-color: rgba(0, 0, 0, 0.39); */
+  /* background: rgb(15, 15, 104); */
+  /* background: linear-gradient(90deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0) 100%); */
+}
+
+.mainAreaDefinicoes {
+  margin-top: 5rem;
+  padding-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  /* width: 100%; */
+  height: inherit;
+  /* background-color: rgba(0, 0, 0, 0.39); */
+  /* background: linear-gradient(90deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0) 100%); */
+}
+
+.mainAreaCard {
+  padding-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* width: 100%; */
+  height: inherit;
+  /* background-color: rgba(0, 0, 0, 0.39); */
+}
+
+.movimentoCntainer,
+.levantamentosItemsContainer,
+.transferenciaItemsContainer{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 99%;
+  padding: 0 0 0.2rem 0;
+  transition: all 1s ease-in-out;
+  border: 1px solid white;
+  border-radius: 8px;
+  margin-bottom: 5px;
+  overflow-y: hidden;
+  height: 340px;
+  transition: all 2s ease-in-out;
+}
+
+.movimentosContainer{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: white;
+  color: white;
+  height: 300px;
+  padding-bottom: 15px;
+
+}
+/* .movimentoCntainer header{
+
+} */
+
+#myChartCard{
+  /* margin: 1rem; */
+/* height: 200px;  */
+/* flex-shrink: 1; */
+}
+
+
+.movimentoCntainer header{
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+.movimentoCntainer header button{
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+
+.mainArea h1 {
+  padding: 1rem;
+  color: white;
+  font-size: 16px;
+}
+
+.borderCurveElements input,
+.borderCurveElements select {
+  border-top-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  outline: none;
+}
+
+.cartaoContainer {
+  margin: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-self: center;
+  /* width: 500px;
+  height: 250px; */
+   background: linear-gradient(45deg,blueviolet,purple );
+  /* background: linear-gradient(60deg, black, rgb(34, 34, 149)); */
+  border-radius: 8px;
+  margin-bottom: 5rem;
+}
+
+#chip {
+  width: 50px;
+  height: 50px;
+  margin-left: 1.5rem;
+  position: absolute;
+  margin-top: 5rem;
+}
+
+#bankCardLogo {
+  text-align: right;
+  padding: 0.5rem;
+  color: white;
+}
+
+.cardDetails {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  color: white;
+  padding: 0.5rem;
+  padding-left: 1rem;
+  text-align: right;
+}
+
+.saldo {
+  padding: 0 9px 0 1rem;
+  text-align: center;
+  color: white;
+}
+
+.contactContainer {
+  padding-left: 1rem;
+}
+
+.contactContainer ul li {
+  padding: 1rem;
+  list-style-type: none;
+}
+
+.contactContainer ul li a {
+  text-decoration: none;
+  color: white;
+}
+
+.contactContainer ul h4 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+  padding: 0.5rem;
+}
+
+.contactContainer ul h4 img {
+  width: 5%;
+  height: 5%
+}
+
+.logoutModal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+
+.modalOut {
+  background: radial-gradient(rgba(137, 43, 226, 0.699),rgba(128, 0, 128, 0.751));
+  height: inherit;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modalItems {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  color: white;
+}
+
+.modalItems h4 {
+  position: absolute;
+  bottom: 1%;
+  text-align: center;
+  color: white;
+}
+.creditoFormOperation{
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.transferenciaContainer form button,
+.logoutModal button,
+.btnSalvarDados,
+.navegationButon,
+.btnSimular{
+  padding: 0.5rem;
+  border-radius: 8px;
+  background:white;
+}
+
+/* .btnSalvarDados{ */
+    /* align-self: center; */
+  /* } */
+
+ #clienteBilhete{text-transform: uppercase;}
+#navegationButton{
+  /* background: linear-gradient(black, purple); */
+  color: black;
+  padding: 0.5rem;
+  transition: all 1s ease-in-out;
+}
+#navegationButton:hover{
+  border: 1px solid white;
+}
+
+.invisible{
+visibility: visible;
+}
+#invisible{
+  background-color: rgba(0, 0, 0, 0.705);
+  color: white;
+}
+#btnSair{
+  cursor: pointer;
+  display: flex;
+  gap: 9px;
+  justify-content: space-between;
+}
+#btnSair img{
+  width: 20px;
+  height: 20px;
+}
+
+#btnSairNO {
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.651) 60%, rgba(128, 0, 128, 0.74));
+  color: white;
+}
+
+.logoutModal button {
+  width: 60%;
+}
+.hideS{
+  display: none;
+}
+
+.hide {
+  display: none;
+}
+
+.infoValidation {
+  color: white;
+  font-weight: 700;
+}
+
+.avatarContainer {
+  position: absolute;
+  right: 1%;
+  top: 10%;
+  width: 10%;
+  color: white;
+  /* background:linear-gradient(45deg,rgba(0, 0, 0, 0.651) 60%,rgba(128, 0, 128, 0.74)); */
+  border-top-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  /* height: 20%; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.logoContainer{
+  display: flex;
+  flex-direction: column;
+  max-height: 150px;
+  max-width: 150px;
+}
+.logoContainer img{
+  width: 50%;
+  height: 50%;
+  cursor: pointer;
+  transition: all 1s ease-in-out;
+}
+.logoContainer img:hover{
+  transform: scale(1.2);
+  box-shadow: 0 5px 5px 0 white;
+}
+
+.avatarDetails{
+  display: flex;
+  padding: 0.5rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-height: 150px;
+  max-width: 150px;
+}
+
+.avatarItems{
+  position: absolute;
+  margin-top: 15rem;
+  width: 150px;
+  height: 150px;
+  border-radius: 2px;
+  color: white;
+  border: 2px solid rgb(255, 255, 255);
+  background:linear-gradient(purple,blueviolet)  ;
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  /* display: none; */
+  transition: all 1s 2s ease-in-out;
+}
+
+.avatarItems ul{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: all 1s ease-in-out;
+} 
+
+.avatarItems ul li{
+  padding: 3px;
+  border-radius: 8px;
+}
+.avatarItems ul li a{
+  text-decoration: none;
+  color: white;
+  transition: all 1s ease-in-out;
+}
+
+.avatarItems ul li:hover{
+  /* background-color:whitesmoke; */
+  border: 1px solid white;
+  color: purple;
+  cursor: pointer;
+  /* padding: 5px; */
+  border-radius: 6px;
+}
+/* 
+.avatarItems:hover{
+
+} */
+
+
+#avatarImg {
+  width: 52%;
+  height: 52%;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 1s ease-in-out;
+}
+
+.creditoForm{
+  display: flex;
+  flex-direction: column;
+}
+
+#avatarImg:hover{
+  box-shadow: 2px 2px 2px 2px white;
+}
+
+.contactosContainer{
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  gap: 8px;
+}
+
+label{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.camposObrigatorio{
+color: red;
+padding: 2px;
+font-size: 20px;
+}
+
+.contactosContainer div{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 50%;
+}
+
+
+.dashboardContainerItems {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: 2.5rem;
+  justify-content: space-evenly;
+}
+
+.transferenciaRapidaForm{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+
+.mainAreaDashboard {
+  margin-top: 5rem;
+  /* background-color: red; */
+  padding: 1rem;
+  padding-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  height: inherit;
+  overflow-y: auto;
+  /* background-color: #27062c; */
+  /* background: linear-gradient(45deg, rgba(0, 0, 0, 0.651) 30%, rgba(128, 0, 128, 0.74),rgba(255, 255, 255, 0.747)); */
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.mobileDashMenu ul {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start;
+  padding: 1rem;
+}
+
+.mobileDashMenu ul li button {
+  padding: 0.5rem;
+  border-top-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  color: white;
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.651) 60%, rgba(128, 0, 128, 0.74));
+
+}
+
+
+.creditoSelecionado,
+.creditoFichaDescription{
+  margin-top: 1rem;
+  border-radius: 8px;
+  padding: 0.5rem;
+  color: black;
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  background-color: white;
+}
+
+.logoContainerCredito{
+  width: 100px;
+  height: 100px;
+  /* justify-content:center ; */
+  /* align-self: flex-end; */
+}
+
+.logoContainerCredito img{
+  width: 100%;
+  height: 100%;
+  border: 1px solid purple;
+}
+
+.creditoFichaDescription{
+  height: 100%;
+  padding: 2.5rem;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+}
+.creditoFichaDescription header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.creditoUserDataCreditoBody{
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  cursor: pointer;
+}
+#exportarContratoBtn{
+  align-self: flex-end;
+}
+.creditoUserDataCreditoBody h3{
+  text-align: center;
+  padding: 1rem;
+}
+
+.termosBox{
+  margin-top: 5rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding-left: 2rem;
+  margin-bottom: 0.6rem;
+}
+
+#agreeBox{
+  width: 18px;
+  height: 18px;
+  transition: all 1s ease-in-out;
+}
+input[type="checkbox"] {
+  background-color: purple;
+}
+
+::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the track */
+  border-radius: 8px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: purple;
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #382d2d; /* Color of the handle when hovered */
+}
+
+.meusCreditoContainer{
+  margin-top: 9rem;
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+  height: 70%;
+  overflow-y: auto;
+}
+.meusCreditoContainer h1{padding: 1.5rem; }
+
+.creditoItemContainer{
+  margin-top: 4rem;
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  height: 60%;
+  overflow-y: auto;
+  transition: all 1.5s ease-in-out;
+}
+
+.creditoItemContainer div{
+  width: 200px;
+  height: 200px;
+  /* border-radius: 8px; */
+  background-color: rgb(156, 72, 156);
+  cursor: pointer;
+  transition: all 1s ease-in-out;
+  color: white;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+  .levantamentos,
+  .transferencias
+   {
+    /* margin: 0.3rem; */
+    padding: 0.3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    height: 200px;
+    overflow-y: scroll;
+  }
+
+.desktop{
+  display: none;
+}
+span{
+  font-weight:300;
+  font-size: 10px;
+}
+
+@media screen and (min-width:768px) {
+  .dashboardDadosFormContainer{
+    height: 135vh;
+  }
+
+  .movimentoCntainer{
+    transition: all 2s ease-in-out;
+  }
+  span{
+    font-weight:700;
+    font-size: 14px;
+  }
+  .mobile{
+    display: none;
+  }
+  .desktop{
+    display: flex;
+    flex-direction: column;
+  }
+  /* .creditoItemContainer{
+    margin-top: 2rem;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    height: 60%;
+    overflow-y: auto;
+  } */
+  .creditoHead {display:grid;
+    grid-template-columns: repeat(8,20px);
+    justify-items: center;
+  }
+
+  .creditoHead p {
+    text-align: center;
+  }
+
+
+  .creditoItemContainer div h1{ align-self: center; margin-bottom: 1rem;}
+  .creditoItemContainer div:hover{
+    border: 3px solid white;
+    border-radius: 5px;
+  }
+  /* .utilizadorContainer{
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    transition: all 2s ease-in-out;
+  } */
+  /* .utilizadorDados{
+    gap: 0.6rem;
+    font-size: 20px;
+  } */
+  /* .userAvatar{
+    width: 400px;
+    height: 400px;
+  } */
+  .casaPropria{
+    margin-top: 0.5rem;
+    display: flex;
+    gap: 1rem;
+  }
+
+  .casaPropria label{
+    display: flex;
+    gap: 1rem;
+    padding: 0 0.1rem 0 0;
+  }
+  .btnSalvarDados,
+  .btnSimular{
+    /* margin-top: 0.5rem; */
+    align-self: center;
+  }
+  .dashboardUserDadosForm {
+    /* display: grid;
+    grid-template-columns: repeat(2, 50fr);
+    grid-template-rows: repeat(2,100fr);
+    column-gap: 1.5rem;  */
+    padding: 1rem;
+    overflow-y: hidden;
+  }
+  .mobileDashMenu {
+    display: none;
+  }
+
+  .mobileDashBoard {
+    position: fixed;
+    left: -100%;
+  }
+
+  .mainAreaDashboard {
+    /* align-items: center; */
+    /* justify-content: center; */
+  }
+
+  .dashboardContainerItems {
+    margin-top: 1rem;
+    /* position: static; */
+    /* display: grid; */
+    /* grid-template-columns: 44fr 44fr 44fr; */
+    gap: 1.5rem;
+    /* width: 100%; */
+    /* padding-left: 1rem; */
+  }
+
+  .dashboardContainerItems div{
+    /* width: 45%; */
+    width: 400px;
+  }
+  .mainArea,
+  .mainAreaCard {
+    margin-top: 6rem;
+    display: grid;
+    grid-template-columns: 50fr 50fr;
+    gap: 0.5rem;
+    /* height: inherit; */
+    /* background-color: rgba(0, 0, 0, 0.39); */
+  }
+
+  .mainAreaCard {
+    /* margin-top: 6rem; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* grid-template-columns: 50fr 50fr; */
+    gap: 0.5rem;
+    /* height: inherit; */
+    /* background-color: rgba(0, 0, 0, 0.39); */
+  }
+
+  .sideBarControler {
+    width: 30%;
+  }
+
+  .cartaoContainer {
+    align-self: center;
+    justify-self: center;
+    width: 400px;
+    height: 245px;
+    border-radius: 16px;
+  }
+
+  .transferenciaContainer {
+    align-self: center;
+    width: 80%;
+    border-radius: 16px;
+  }
+  .sideBarContainer nav {
+    /* margin-top: 10rem; */
+    gap: 1.5rem;
+     }
+  #chip {
+    padding-left: 8px;
+    padding-top: 8px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .logoutModal button {
+    width: 30%;
+  }
+}
+
+.moneyOptions option {
+  padding: 0.5px;
+  gap: 0.5rem;
+  margin: 0.5rem;
+  cursor: pointer;
+}
+
+.levantamentos,
+.transferencias
+ {
+  margin: 0.3rem;
+  margin-top: 5rem;
+  padding: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  height: 400px;
+  overflow-y: scroll;
+}
+
+.levantamentoItem,
+.contaItem,
+.transacaoItem {
+  border-top-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background: #ffffffa8;
+  color: black;
+  margin: 0.4rem;
+  padding: 0.4rem;
+  /* display: flex; */
+  font-size: 15px;
+  font-weight: 400;
+  /* align-items: center; */
+  border: 2px solid #e0d7d7ea;
+  /* justify-content: space-between; */
+  height: 25px;
+  /* align-items: center; */
+  display: grid;
+  grid-template-columns: repeat(4,25fr);
+}
+
+.contaItem,
+.transacaoItem{
+  margin: 0.4rem 2rem 0.4rem 2rem;
+}
+.creditoItemHead
+/* .creditoItemHeadAprovacao */
+{
+  display: grid;
+  grid-template-columns: repeat(8,20fr);
+  border-top-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background: #ffffffa8;
+  color: black;
+  margin: 8px 1rem 0 1rem;
+  padding: 0.4rem;
+  font-size: 15px;
+  font-weight: 400;
+  align-items: center;
+  border: 2px solid #e0d7d7ea;
+}
+
+.creditoItemHeadAprovacao{
+  display: grid;
+  border-top-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background: #ffffffa8;
+  color: black;
+  margin: 8px 1rem 0 1rem;
+  padding: 0.3rem;
+  font-size: 15px;
+  font-weight: 400;
+  align-items: center;
+  border: 2px solid #e0d7d7ea;
+  grid-template-columns: repeat(5,20fr);
+}
+
+.levantamentoAction {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.levantamentoAction button {
+  padding: 8px;
+  border-radius: 8px;
+}
+
+#levantamentoCancelar,
+.delete-link
+ {
+  background-color: rgba(217, 23, 23, 0.638);
+  color: white;
+}
+
+#recuperacao {
+  color: white;
+}
+
+.defenicoesHeader ul {
+  display: flex;
+  gap: 1rem;
+  /* background-color: red; */
+}
+
+.defenicoesHeader ul li {
+  list-style: none;
+}
+
+.transferenciaRapidaForm{
+width: 90%;
+/* height: 90%; */
+padding: 1rem;
+display: flex;
+gap: 1rem;
+/* align-items: center; */
+justify-content: center;
+}
+.transferenciaRapidaForm p{
+  align-self: center;
+}
+.transferenciaRapidaForm input,
+.transferenciaRapidaForm button{
+  padding: 0.5rem;
+  border: transparent;
+}
+.transferenciaRapidaForm button{
+  margin-top: 1rem;
+}
+
+.dashboardContainerItems div,
+.mobileDashBoard {
+  /* width: 500px; */
+  /* height: 250px; */
+  /* border: 0.01px solid rgba(255, 255, 255, 0.957); */
+  /* opacity: 0.5; */
+  border-top-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 0.5rem;
+  cursor: pointer;
+  /* width: 400px; */
+  transition: all 2s ease-in-out;
+  background-color: rgba(43, 41, 43, 0.603);
+}
+.saldo{
+  height: 350px;
+}
+
+.dashboardContainerItems div:hover,
+.userCreditoItemContainer:hover,
+.creditoItemContainerFuncionario:hover,
+.creditoItemContainerFuncionario:active,
+.userCreditoItemContainer:hover,
+.dashboardContainerItems div:active,
+.mobileDashBoard:hover,
+.funcionarioCreditoItemHead:hover{
+  box-shadow: 0 1.5rem 3rem -0.75rem hsl(294, 97%, 49%);
+}
+
+.mobileDashBoard {
+  width: 80%;
+  height: 65%;
+}
+
+.levantamentoContainerDash {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.levantamentoContainerDash a {
+  text-align: center;
+  color: white;
+}
+
+.saldoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+.saldoContainer a {
+  padding-top: 0.5rem;
+  color: white;
+}
+
+.saldoContainer h4{
+  padding: 1rem;
+}
+
+.levantamentoContainerDash ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+
+.levantamentoContainerDash ul li {
+  background-color: #6A5ACD;
+  color: white;
+  padding: 0.5rem;
+}
+.delete-link,
+.update-link{
+  padding: 0.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+}
+.update-link{
+  background-color: white;
+  color: blueviolet;
+}
+.contaInfo{
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.info{
+  text-align: center;
+}
+.lineItem{
+  display: flex;
+  gap: 5px;
+}
+
+.modalSolicitarCredito,
+.modalBox{
+  z-index: 8000;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  background-color: white;
+  opacity: 0.98;
+  padding-bottom: 5rem;
+  transition: all 1s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+
+
+.modalBox{
+  background-color: white;
+  left: -100%;
+  height: 60%;
+  width: 60%;
+}
+
+.modalBody{
+  margin-top: 10rem;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.modalBody h3{
+  text-align: center;
+}
+
+@media (min-width:501px) and (max-width:767px)  {
+  .cartaoContainer {
+    width: 300px;
+    height: 200px;
+    border-radius: 16px;
+  }
+}
+@media (max-width:500px) {
+  .cartaoContainer {
+    width: 300px;
+    height: 200px;
+    border-radius: 16px;
+  }
+  @media (max-width:768px) {
+     #headerMoviments{
+      font-size: 14px;
+      margin-top: 5px;
+    }
+    .movimentoCntainer{
+      height: 300px;
+    }
+
+  }
+  .dashboardContainerHeader{
+  z-index: 9000;
+ }
+  .dashboardContainerItems div{
+    width: 95%;
+    /* width: 300px; */
+  }
+  /* .sideBarContainer{
+    position: fixed;
+  }  */
+  .sideBarContainer nav{
+    padding-top: 15%;
+    gap: 1rem;
+  }
+  form label{
+    font-size: 14px;
+  }
+  #clienteNascimento{
+    width: 88%;
+  }
+}
+.userCreditoItemContainer,
+.creditoItemContainerFuncionario
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem;
+  padding: 1rem;
+  color: white;
+  border: 1px solid white;
+  border-radius: 8px;
+  transition: all 1s ease-in-out;
+  cursor: pointer;
+}
+
+
+
+.creditoItemContainerFuncionario{
+  height: 150px;
+  padding-top: 2rem;
+}
+.userCreditoItemContainer h3{
+  text-align: center;
+}
+
+#btnHideMovimentos{
+  border: transparent;
+  outline-color: #6A5ACD;
+}
+
+.rotate{
+  transform: rotate(180deg);
+  transition: all 1s ease-in-out;
+}
+.rotateItem{
+  transition: all 1s ease-in-out;
+}
+.transferenciasItemContainer{
+  display: flex;
+  flex-direction: column;
+  /* height: 300px; */
+  overflow-y: auto;
+  /* overflow-y: hidden; */
+}
+.hideMoviments{
+  height: 6rem;
+}
+
+
+.hideMovimentsTransfer{
+  height: 3rem;
+}
+
+.yesNoContainer{
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 3rem;
+}
+
+.yesNoContainer button{
+  padding: 0.5rem;
+  width: 20%;
+  border-radius: 8px;
+}
+
+.yesNoContainerBtnNo{
+  background-color: rgba(217, 23, 23, 0.638);
+  color: white;
+}
+
+.hideMovimentsGraph{
+  height: 40px;
+  transition: all 1s ease-in-out;
+}
+.logoContainerPdf{
+  width: 90px;
+  height: 90px;
+}
+
+.pdfContainer{
+  display: flex;
+  flex-direction: column;
+  color: rgb(29, 1, 29);
+}
+.pdfContainerBody{
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pdfContainer header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem;
+}
+.logoContainerPdf img{
+  width: 100%;
+  height: 100%;
+  border: 1px solid purple;
+  border-top-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+.transferenciaPdfContainer{
+  margin: 4rem 2rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.destinatarioContainer,
+.origenContainer
+{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dashboardTimer{
+  padding-right: 1rem;
+  text-align: end;
+  cursor: pointer;
+  transition: all 1s ease-in-out;
+  width: fit-content;
+align-self: flex-end;
+}
+.dashboardTimer:hover{
+  box-shadow: 0 0 12px 15px rgb(104, 7, 104);
+
+}
+.hideAvatar{
+  display: none;
+}
+@media screen and (max-width:563px) {
+  .cabecalhoItem{
+    font-size: 10px;
+  } 
+  .codeMobile{display: none;}
+
+  .levantamentoItem{
+    grid-template-columns: repeat(3,33fr);
+  }
+  .cabecalhoItem span{
+    font-size: 10px;
+    font-weight: 300;
+  } 
+}
